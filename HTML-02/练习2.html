@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			dd{
+				display: inline;
+				margin: 14px 0;
+				font: 12px/31px "宋体";
+			}
+			dl{
+				margin: 0;
+			}
+			#排序{
+				margin: 20px 0 0 20px;
+			}
+			#筛选{
+				margin: 6px 0 20px 20px;
+			}
+			a{
+				text-decoration: none;
+				color: black;
+				display: inline-block;
+			}
+			dl a:hover{
+				color: white;
+				background-color: #45a4fc;
+			}
+			section{
+				width: 565px;
+				border: 1px solid #e6e6e6;
+			}
+			div{
+				width: 525px;
+				border-top: 1px solid #e6e6e6;
+				font-size: 0;
+				margin-left: 20px;
+				text-align: center;
+			}
+			#moren,#all{
+				background-color: #45a4fc;
+				color: #FFFFFF;
+			}
+			dd a{
+				margin: 0 14px;
+			}
+			img{
+				margin: 0 29px 0 0;
+			}
+			.img{
+				display: inline-block;
+				margin: 30px 29px 18px 0;
+				width: 155px;
+				border:none;
+			}
+			#地址{
+				margin-right: 0;
+			}
+			span{
+				font: 12px/21px "宋体";
+				margin: 23px 0 0 29px;
+			}
+			div a{
+				font: 12px/20px "宋体";
+				margin-top: 20px;
+			}
+			div span{
+				display: block;
+				font: 12px/20px "宋体";
+				color: red;
+				margin: 0;
+			}
+			div button{
+				font: 12px/20px "宋体";
+				color: #fff;
+				background-color: #0d76cf;
+				border: none;
+				margin: 8px 0 0 0;
+			}
+		</style>
+	</head>
+	<body>
+		<section>
+			<dl id="排序">
+				<dd class="dd">排序方式：</dd><dd><a href="#" id="moren">默认</a></dd>|<dd><a href="#">按上架时间</a></dd>|<dd><a href="#">按财富值</a></dd>|<dd><a href="#">按兑换量</a></dd>
+			</dl>
+			<dl id="筛选">
+				<dd class="dd">按财富值筛选：</dd><dd><a href="#" id="all">全部</a></dd>|<dd><a href="#">0-5000</a></dd>|<dd><a href="#">5001-10000</a></dd>|<dd><a href="#">10001-50000</a></dd>|<dd><a href="#">50000以上</a></dd>
+			</dl>
+			<div>
+				<div class="img">
+					<img src="img/img2-1.jpg"/>
+					<a href="#">现代简约收纳书桌</a>
+					<span>999财富值</span>
+					<button onclick="window.open('#')">立即兑换</button>
+				</div>
+				<div class="img">
+					<img src="img/img2-2.jpg"/>
+					<a href="#">任务初级评审报名费</a>
+					<span>999财富值</span>
+					<button onclick="window.open('#')">立即兑换</button>
+				</div>
+				<div class="img" id="地址">
+					<img id="img3"src="img/img2-3.jpg"/>
+					<a href="#">地址兑换</a>
+					<span>999财富值</span>
+					<button onclick="window.open('#')">立即兑换</button>
+				</div>
+			</div>
+		</section>
+	</body>
+</html>
