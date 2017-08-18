@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.clearfix{
+				*zoom:1;
+			}
+			.clearfix:after{
+				content: '';
+				display: block;
+				clear: both;
+			}
+			
+			body,h3,p{
+				margin: 0;
+			}
+			section{
+				width: 1034px;
+				margin: 15px;
+				
+			}
+			div{
+				height: 170px;
+				margin: 13px 10px 0 10px;
+				float: left;
+				position: relative;
+			}
+			a{
+				text-decoration: none;
+			}
+			#left,#right{
+				float: left;
+				margin-top: 80px;
+			}
+			span{
+				display: block;
+				width: 72px;
+				font: 12px/24px "宋体";
+				color: #FFFFFF;
+				text-align: center;
+				background: #4ACA6D;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			p{
+				display: block;
+				/*width: 230px;*/
+				font: 13px/18px "宋体";
+				color: #FFFFFF;
+				background: rgba(0,0,0,0.5);
+				/*opacity: 0.5;
+				filter: alpha(opacity=50);*/
+			}
+			.one-line{
+				height: 39px;
+				line-height: 39px;
+				position: relative;
+				left: 0px;
+				bottom: 43px;
+			}
+			.two-line{
+				/*height: 58px;*/
+				padding: 14px 0 14px 10px;
+				position: relative;
+				left: 0px;
+				bottom: 67px;
+			}
+			.one-line a{
+				display: block;
+				margin-left: 10px;
+			}
+			.two-line a{
+				display: block;
+				width: 197px;
+			}
+		</style>
+	</head>
+	<body>
+		<section class="clearfix">
+			<h3>往期回顾</h3>
+			<img src="img/icon2-1.gif"/ id="left">
+			<div class="clearfix">
+				<span>第1211期</span>
+				<a href="#"><img src="img/img2-1.jpg" /></a>
+				<p class="one-line"><a>冬天的静电会损害生理功能吗？</a></p>
+			</div>
+			<div class="clearfix">
+				<span>第1212期</span>
+				<a href="#"><img src="img/img2-2.jpg" /></a>
+				<p class="one-line"><a>晚睡拖延行为背后的心理机制</a></p>
+			</div>
+			<div class="clearfix">
+				<span>第1213期</span>
+				<a href="#"><img src="img/img2-3.jpg" /></a>
+				<p class="two-line"><a>为什么每颗大蒜，都有变成“黑蒜”的超级梦？</a></p>
+			</div>
+			<div class="clearfix">
+				<span>第1214期</span>
+				<a href="#"><img src="img/img2-4.jpg" /></a>
+				<p class="two-line"><a>为什么聊天时不能始终盯着对方的眼睛？</a></p>
+			</div>
+			<img src="img/icon2-2.gif" id="right"/>
+		</section>
+	</body>
+</html>

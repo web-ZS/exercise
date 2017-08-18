@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width: 400px;
+				height: 240px;
+				border: 1px solid #f00;
+				position: relative;
+			}
+			span{
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				background: #000;
+				/*background: rgba(0,0,0,0.5);*/
+				color: #fff;
+				width: 100%;
+				font: 16px/40px "微软雅黑";
+				text-indent: 2em;
+				opacity: 0.5;
+				filter: alpha(opacity=50);
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			透明度
+				opacity(0-1)						标准浏览器
+				filter:alpha(opacity=0-100)		IE67
+				rgba(0,0,0,0.5)					最后一个参数代表透明度（0-1）
+		-->
+		<div>
+			<img src="img/opacity.jpg"/>
+			<span>三七花泡水喝的功效</span>
+		</div>
+	</body>
+</html>
