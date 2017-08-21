@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			form{
+				width: 530px;
+				height: 470px;
+				position: relative;
+			}
+			li{
+				display: inline;
+				margin-right: 21px;
+			}
+			ul,input{
+				margin: 0;
+				padding: 0;
+			}
+			input,select{
+				border: 1px solid #e4e9ed;
+				font: 14px/32px "宋体";
+				color: #858688;
+			}
+			ul{
+				list-style-type: circle;
+				list-style-image: url(img/img-meihua.gif);
+				font: 14px/34px "宋体";
+				color: #858688;
+				margin: 20px 0 10px 0;
+			}
+			select{
+				width: 328px;
+				height: 32px;
+			}
+			a{
+				color: #e05773;
+				margin-right: 6px;
+			}
+			.liangzi,#sex{
+				text-indent: 2em;
+			}
+			.liangzi input,input[name="vocationTarget"]{
+				width: 328px;
+			}
+			#location{
+				text-indent: 2em;
+			}
+			#submit{
+				width: 140px;
+				font: 12px/36px "宋体";
+				color: #fff;
+				border: none;
+				background: #e15771;
+				position: absolute;
+				left: 90px;
+				margin: 10px 0 10px 0;
+			}
+			#name{
+				color: #e05773;
+				margin-left: 10px;
+			}
+			#mail{
+				color: #7bd78c;
+				margin-left: 10px;
+			}
+			#xueli select{
+				width: 158px;
+			}
+			#submit{
+				margin-left: 8px;
+			}
+		</style>
+	</head>
+	<body>
+		<form action="www.123.com">
+			<ul class="liangzi">
+				<li><a>*</a><label for="userName">姓名</label></li>
+			    <input type="text" name="userName" id="userName"/><span id="name">姓名不能为空</span>
+			</ul>
+			<ul id="sex">
+				<li><a>*</a><label for="man">性别</label></li>
+			    <input type="radio" name="sex" id="man"/>男
+			    <input type="radio" name="sex" />女
+			</ul>
+			<ul class="liangzi">
+				<li><a>*</a><label for="phone">电话</label></li>
+			    <input type="text" name="phoneNumbor" id="phone"/>
+			</ul>
+			<ul class="liangzi">
+				<li><a>*</a>邮箱</li>
+			    <input type="text" name="e-mail" /><span id="mail">填写正确</span>
+			</ul>
+			<ul id="yixiang">
+				<li><a>*</a>求职意向</li>
+			<input type="text" name="vocationTarget" value="web前端" />
+			</ul>
+			<ul id="xueli">
+				<li><a>*</a>最高学历</li>
+			<select name="educationalBackground">
+				<option>
+					大专
+				</option>
+				<option>
+					本科
+				</option>
+				<option>
+					硕士
+				</option>
+				<option>
+					博士
+				</option>
+			</select>
+			<select name="educationalDate">
+				<option>
+					2011年
+				</option>
+				<option>
+					2012年
+				</option>
+				<option>
+					2013年
+				</option>
+				<option>
+					2014年
+				</option>
+			</select>
+			</ul>
+			<ul>
+				<li><a>*</a>工作年限</li>
+			<select name="workTime">
+				<option>
+					1年
+				</option>
+				<option>
+					2年
+				</option>
+				<option>
+					3年
+				</option>
+				<option>
+					5年
+				</option>
+			</select>
+			</ul>
+			<ul id="location" class="select">
+				<li>所在地</li>
+			<select name="location">
+				<option>
+					北京
+				</option>
+				<option>
+					上海
+				</option>
+				<option>
+					广州
+				</option>
+				<option>
+					深圳
+				</option>
+			</select>
+			</ul>
+			<input id="submit" type="submit" value="提交" />
+		</form>
+	</body>
+</html>
