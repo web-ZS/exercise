@@ -1,0 +1,333 @@
+body,h1,h3,h4,ul,p,span{
+	margin: 0;
+}
+a{
+	text-decoration: none;
+}
+input,ul{
+	padding: 0;
+}
+ul{
+	list-style: none;
+}
+.clearfix{
+	*zoom: 1;
+}
+.clearfix:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+/*nav*/
+nav{
+	width: 980px;
+	background: #29292a;
+	font-size: 0;
+	padding: 0 181px;
+}
+nav a{
+	font: 10px/44px "微软雅黑";
+	color: #fff;
+	margin-left: 90px;
+}
+nav #help,nav a:hover{
+	color: #919191;
+}
+nav #navLogo{
+	margin-left: 3px;
+}
+nav img{
+	vertical-align: middle;
+}
+/*header*/
+header{
+	width: 980px;
+	padding: 0 181px;
+	margin-bottom: 8px;
+	background: url(img/img-bg01.jpg);
+}
+header div{
+	/*height: 52px;*/
+	border-bottom: 1px solid #bab9bd;
+	margin-bottom: 66px;
+}
+header div h3{
+	display: inline-block;
+	font: 19px/19px "微软雅黑";
+	color: #333333;
+	padding: 16px 0;
+}
+header div a{
+	font: 10px/10px "宋体";
+	color: #333333;
+	padding: 25px 0 16px 0;
+}
+header div a:hover{
+	color: #0070c9;
+}
+header div #community{
+	margin: 0 25px 0 835px;
+}
+header h1{
+	font: 45px/69px "微软雅黑";
+	color: #333333;
+	margin: auto 291px;
+}
+header h4{
+	font: 18px/42px "微软雅黑";
+	color: #333333;
+	margin: 0 405px 20px 405px;
+}
+header form{
+	position: relative;
+}
+header input{
+	width: 648px;
+	height: 50px;
+	font-size: 25px;
+	font-family: "宋体";
+	color: #a6a6a6;
+	padding-left: 50px;
+	margin: 0 142px 16px 142px;
+}
+header form img{
+	position: absolute;
+	left: 135px;
+	top: 17px;
+}
+header img{
+	margin: 0 30px 20px 26px;
+}
+/*section first*/
+.first{
+	
+	position: relative;
+}
+.first h4{
+	font: 22px/102px "宋体";
+	text-align: center;
+}
+.first .product{
+	width: 980px;
+	height: 214px;
+	margin: 0 181px;
+	text-align: center;
+	margin-bottom: 32px;
+	position: relative;
+}
+.first #watch{
+	position: absolute;
+	left: 16px;
+	bottom: 0;
+}
+.first #phone{
+	position: absolute;
+	left: 190px;
+	bottom: 0;
+	}
+.first #ipad{
+	position: absolute;
+	left: 342px;
+	bottom: 0;
+	}
+.first #mac{
+	position: absolute;
+	left: 507px;
+	bottom: 0;
+	}
+.first #help{
+	position: absolute;
+	right: 186px;
+	bottom: 0;
+	}
+.first #iTunes{
+	position: absolute;
+	right: 17px;
+	bottom: 0;
+	}
+.first .product img{
+	display: block;
+}
+.first .product a{
+	font: 15px/58px "微软雅黑";
+	color: #333333;
+}
+.first #watch img{
+	margin-left: 16px;
+}
+.first .list{
+	border-top: 1px solid #dedede ;
+	border-bottom: 1px solid #dedede ;
+	text-align: center;
+}
+.first .list a{
+	font: 16px/66px "宋体";
+	color: #0070C9;
+}
+/*section second*/
+.second h3{
+	font: 34px/140px "微软雅黑";
+	color: #333333;
+	text-align: center;
+	margin-bottom: 13px;
+}
+.second div{
+	display: inline-block;
+}
+.second .Mac{
+	width: 445px;
+	margin-left: 185px;
+	background: url(img/mac-02.jpg) no-repeat 114px 0;
+}
+.second .Mac h3{
+	font: 26px/66px "微软雅黑";
+	color: #333333;
+	text-align: left;
+	margin-top: 125px;
+}
+.second .Mac p{
+	font: 15px/26px "微软雅黑";
+}
+.second .Mac a{
+	font: 12px/50px "宋体";
+	color: #328cd4;
+}
+.second .Mac a:hover{
+	text-decoration: underline;
+}
+.second .iPhone{
+	width: 430px;
+	margin-left: 90px;
+	background: url(img/phone-02.jpg) no-repeat 182px 0;
+}
+.second .iPhone h3{
+	font: 26px/66px "微软雅黑";
+	color: #333333;
+	text-align: left;
+	margin-top: 125px;
+}
+.second .iPhone p{
+	font: 15px/26px "微软雅黑";
+}
+.second .iPhone a{
+	font: 12px/50px "宋体";
+	color: #328cd4;
+}
+.second .iPhone a:hover{
+	text-decoration: underline;
+}
+/*third*/
+.third{
+	padding: 50px 362px 20px 266px;
+	border-top: 1px solid #dedede;
+	background: url(img/img-lock.jpg) no-repeat 782px 55px;
+}
+.third h1{
+	width: 375px;
+	font: 38px/48px "微软雅黑";
+	color: #333333;
+	/*margin-left: 266px;
+	margin-bottom: 18px;*/
+}
+.third p{
+	width: 375px;
+	/*margin-left: 266px;*/
+	font: 18px/32px "微软雅黑";
+	color: #333333;
+}
+.third a{
+	width: 375px;
+	/*margin-left: 266px;
+	margin-bottom: 20px;*/
+	font: 22px/84px "微软雅黑";
+	color: #59a2dc;
+}
+.third a:hover{
+	text-decoration: underline;
+}
+/*footer*/
+footer{
+	
+	padding: 0 184px;
+	background: #f2f2f2;
+}
+footer div{
+	padding: 25px 0 25px 3px;
+	font-size: 0;
+}
+footer div img{
+	vertical-align: middle;
+}
+footer div span{
+	margin-left: 16px;
+	font: 10px/10px "宋体";
+	vertical-align: middle;
+}
+footer .ul{
+	width: 980px;
+	margin-bottom: 22px;
+}
+footer ul{
+	float: left;
+}
+footer ul li{
+	font: 10px/24px "微软雅黑";
+	font-weight: bold;
+}
+footer ul li a{
+	font: 10px/20px "宋体";
+	color: #777777;
+}
+footer .server{
+	margin-right: 154px;
+}
+footer .plan{
+	margin-right: 192px;
+}
+footer .resource{
+	margin-right: 186px;
+}
+/*footer .addressList{
+	margin-right: 0;
+}*/
+footer p{
+	display: block;
+	font: 10px/26px "宋体";
+	color: #888888;
+	border-bottom: 1px solid #888888;
+}
+footer p a{
+	color: #0070C9;
+}
+footer p a:hover{
+	text-decoration: underline;
+}
+footer .foot .copyright{
+	float: left;
+	margin-left: 0;
+	font: 10px/15px "微软雅黑";
+	color: #a5a5a5;
+}
+footer .foot li{
+	float: left;
+	width: 64px;
+	font: 10px/15px "微软雅黑";
+	color: #555555;
+	text-align: center;
+	border-right: 1px solid #d6d6d6;
+}
+footer .foot #end{
+	border-right: none;
+}
+footer .foot li a:hover{
+	text-decoration: underline;
+}
+footer .foot img,footer .foot #china{
+	float: right;
+}
+footer .foot #china{
+	width: 42px;
+	font-size: 10px;
+	text-align: right;
+	background: url(img/ico-06.gif) no-repeat ;
+}
