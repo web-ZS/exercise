@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			<!--
+				点击下一张按钮，让图片切换成下一张图
+				点击上一张按钮，让图片切换成上一张图
+			-->
+		</title>
+		
+	</head>
+	<body>
+		<script>
+			window.onload=function(){
+				var btnUp=document.getElementById('btnUp');
+				var btnNext=document.getElementById('btnNext');
+				var img=document.getElementById('img');
+				var arr=["asasdfasdf","asdqwrqwerqwer","cvbsrgwgw","ssbsdfgsfg"];
+				var n=0;
+				btnUp.onclick=function(){
+					n--;
+					if(n<0){
+						n=0;
+					};
+					img.src='img2/'+arr[n]+'.jpg';
+				};
+				
+				btnNext.onclick=function(){
+					n++;
+					if(n>arr.length-1){
+						n=arr.length-1;
+					};
+					img.src='img2/'+arr[n]+'.jpg';
+				};
+			}
+		</script>
+		<input type="button" id="btnUp" name="btnUp" value="上一张"/>
+		<img src="img2/asasdfasdf.jpg" id="img"/>
+		<input type="button" id="btnNext" name="btnNext" value="下一张" />
+	</body>
+</html>
+	

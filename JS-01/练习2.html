@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			section{
+				width: 260px;
+				margin: auto;
+				box-shadow: 0 10px 20px #333;
+				overflow: hidden;
+			}
+			.name{
+				font: 14px/50px "微软雅黑";
+				background: #ed6355;
+				color: #fff;
+				/*padding: 0 32px;*/
+			}
+			.name:hover{
+				background: #ed7f55;
+			}
+			.name .title{
+				margin: 0 32px;
+			}
+			img{
+				float: right;
+				margin-top: 22px;
+				transform: rotate(0deg);
+				cursor: pointer;                                      /*将鼠标移入时的形状设为手指形*/
+			}
+			.name .nameTable{
+				font: 13px/40px "微软雅黑";
+				background: #383838;
+				color: #FFFFFF;
+				padding-left: 70px;	
+			}
+			.nameTable span{
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			window.onload=function(){
+				var nameTables=document.getElementsByClassName('nameTable');
+				var imgs=document.getElementsByTagName('img');
+				var titles=document.getElementsByClassName('title');
+				//console.log(nameTables);
+			for(var i=0;i<imgs.length;i++){
+				imgs[i].index=i;
+				imgs[i].onclick=function(){                                    //点击事件
+					if(nameTables[this.index].style.display=='none'){          //判断选项卡的状态
+						for(var i=0;i<imgs.length;i++){
+							nameTables[i].style.display='none';                //合并其他选项卡
+						    imgs[i].style.transform='rotate(0deg)';	           //其他图标转0deg
+						};
+						nameTables[this.index].style.display='block';          //展开此选项卡
+						this.style.transform='rotate(45deg)';                  //变换十字图标
+					}else{
+						nameTables[this.index].style.display='none';           //合并选项卡
+						this.style.transform='rotate(0deg)';
+					};
+				};
+			};
+			}
+		</script>
+		<section>
+			<div class="name">
+				<div class="title">
+					Home
+				    <img src="img/ico1.gif" />
+				</div>
+				<div class="nameTable" style="display: none;">
+				    <span>Web Design</span>
+				    <span>Hosting</span>
+				    <span>Design</span>
+			        <span>Consulting</span>
+			    </div>
+			</div>
+			
+			<div class="name">
+				<div class="title">
+					Events
+				    <img src="img/ico1.gif" />
+				</div>
+				<div class="nameTable" style="display: none;">
+				<span>Click</span>
+				<span>Mouseover</span>
+				<span>Mouseout</span>
+			    <span>Dbclick</span>
+			    </div>
+			</div>
+			
+			<div class="name">
+				<div class="title">
+					Gallery
+				    <img src="img/ico1.gif" />
+				</div>
+				<div class="nameTable" style="display: none;">
+				<span>Graphics</span>
+				<span>Vectors</span>
+				<span>Photoshop</span>
+			    </div>
+			</div>
+			
+			<div class="name">
+				<div class="title">
+					Service
+				    <img src="img/ico1.gif" />
+				</div>
+				<div class="nameTable" style="display: none;">
+				<span>HTML</span>
+				<span>CSS</span>
+				<span>Javascript</span>
+			    </div>
+			</div>
+			
+			<div class="name">
+				<div class="title">
+					Portfolio
+				    <img src="img/ico1.gif" />
+				</div>
+				<div class="nameTable" style="display: none;">
+				<span>Web Design</span>
+				<span>Hosting</span>
+				<span>Design</span>
+			    <span>Consulting</span>
+			    </div>
+			</div>
+		</section>
+	</body>
+</html>

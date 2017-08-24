@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 300px;
+				height: 300px;
+				border: solid 1px red;
+				display: none;
+			}
+			#box1{
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+			window.onload=function(){
+				var btns=document.getElementsByTagName('input');
+				var divs=document.getElementsByTagName('div');
+				
+				for(var n=0;n<btns.length;n++){
+					btns[n].index=n;
+					btns[n].onclick=function(){
+						
+						for(var n=0;n<divs.length;n++){
+							btns[n].style.background='';
+							divs[n].style.display='none';
+						}
+						
+						this.style.background='yellow';
+						divs[this.index].style.display='block';
+					}
+				}
+			}
+		</script>
+		<input type="button" id="btn1" value="选项一" />
+		<input type="button" id="btn2" value="选项二" />
+		<input type="button" id="btn3" value="选项三" />
+		<div id="box1">内容一</div>
+		<div id="box2">内容二</div>
+		<div id="box3">内容三</div>
+	</body>
+</html>

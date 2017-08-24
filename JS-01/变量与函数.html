@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 200px;
+				height: 200px;
+				background: #000;
+			}
+		</style>
+		<script>
+			window.onload=function(){                            //预加载要用到的元素
+				var box=document.getElementById('box')
+				var btn1=document.getElementById('btn1')
+				var btn2=document.getElementById('btn2')
+				//声明变量
+				function setStyle(){
+					box.style.width='300px';
+					box.style.height='300px';
+					box.style.background='red';
+				}
+				//声明函数 setStyle
+				btn1.onclick=function(){
+					setStyle();
+				}
+				btn2.onclick=function(){
+					setStyle();
+				}
+				//调用变量与函数
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box"></div>
+		<input type="button" id="btn1" name="btn1" value="提交1" />
+		<input type="button" id="btn2" name="btn2" value="提交2" />
+	</body>
+</html>

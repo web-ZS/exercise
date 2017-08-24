@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+			width: 200px;
+			height: 200px;
+			background: #000000;
+			/*display: block;*/
+		}
+		</style>
+	</head>
+	<body>
+		<!--点击按钮的时候，让box在显示与隐藏之间切换-->
+		<script>
+			window.onload=function(){
+				var btn=document.getElementById('btn');
+				var box=document.getElementById('box');
+				//console.log(box.style.display)
+				btn.onclick=function(){
+					//box.style.display='none';
+					if(box.style.display=='block'){
+						box.style.display='none';
+					}else{
+						box.style.display='block';
+					};
+				};
+			};
+		</script>
+		<input type="button" id="btn" name="btn" value="按钮" />
+		<div id="box" style="display: block;"></div>
+	</body>
+</html>

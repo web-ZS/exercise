@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title><!--点击按钮，把输入框里的内容显示到box里--></title>
+		<style>
+			#box{
+				width: 500px;
+				height: 500px;
+				border: 1px solid #000000;
+				margin-top: 10px;
+			}
+			p{
+				margin: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			window.onload=function(){
+				var txt=document.getElementById('text');
+				var btn=document.getElementById('btn');
+				var box=document.getElementById('box');
+				//console.log(txt.value);
+				btn.onclick=function(){
+					var val=txt.value;
+					var newTxt='<p>'+val+'<p>';
+					box.innerHTML=newTxt+box.innerHTML;
+				};
+			};
+		</script>
+		<input type="text" id="text" name="text" value="" />
+		<input type="button" id="btn" name="btn" value="提交" />
+		<div id="box"></div>
+	</body>
+</html>

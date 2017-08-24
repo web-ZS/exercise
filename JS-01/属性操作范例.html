@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: #000000;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			点击按钮获取输入框里的属性名称与属性值，对div进行设置
+		-->
+		<div id="box"></div>
+		<input type="text" id="text1" name="text1" value="" />
+		<input type="text" id="text2" name="text2" value="" />
+		<input type="button" id="btn" name="btn" value="按钮" />
+		<script>
+			var box=document.getElementById('box');
+			var text1=document.getElementById('text1');
+			var text2=document.getElementById('text2');
+			var btn=document.getElementById('btn');
+			btn.onclick=function(){
+				var name=text1.value;
+				var vle=text2.value;
+				box.style[name]=vle;
+			};
+		</script>
+	</body>
+</html>

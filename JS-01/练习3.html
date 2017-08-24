@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				background: #f7f8fa;
+			}
+			img{
+				vertical-align: middle;
+			}
+			h3,p{
+				margin: 0;
+			}
+			a{
+				text-decoration: none;
+			}
+			/*整体效果*/
+			#pic{
+				width: 720px;
+				overflow: hidden;
+				border-radius: 5px;
+				box-shadow: 0 0px 10px #333;
+				margin: 100px auto;
+			}
+			/*左侧图片部分*/
+			#left{
+				width: 520px;
+				height: 280px;
+				float: left;
+				position: relative;
+			}
+			/*左右箭头效果*/
+			#left a{
+				width: 40px;
+				height: 40px;
+				border-radius: 5px;
+				line-height: 40px;
+				background: rgba(0,0,0,0.6);
+				position: absolute;
+				top: 50%;
+				margin-top: -20px;
+				cursor: pointer;
+				text-align: center;
+				font-size: 30px;
+				font-weight: bold;
+				-webkit-text-stroke: 2px #fff;
+				-moz-text-stroke: 2px #fff;
+				box-shadow: 1px 2px 3px #000;
+				transition: 0.3s;
+			}
+			#left a:hover{
+				transform: scale(1.3);
+				background: rgba(0,0,0,0.8);
+			}
+			.prev{
+				left: 10px;
+			}
+			.next{
+				right: 10px;
+			}
+			/*圆点效果*/
+			.circle{
+				position: absolute;
+				bottom: 0;
+				width: 520px;
+				text-align: center;
+				font-size: 0;
+				line-height: 20px;
+			}
+			.circle span{
+				display: inline-block;
+				width: 13px;
+				height: 13px;
+				background: #a3903e;
+				border-radius: 50%;
+				margin: 0 5px;
+				cursor: pointer;
+				transition: 0.3s;
+				border: 1px solid #fff;
+			}
+			.circle span.active{
+				background: #f56a19;
+				transform: scale(1.5);
+			}
+			/*右侧部分*/
+			#right{
+				float: right;
+				width: 180px;
+				height: 260px;
+				padding: 10px;
+				background: #f2f1f1;
+			}
+			.text h3{
+				font: 24px/40px "微软雅黑";
+				color: #333;
+			}
+			.text h3 span{
+				color: #cc330a;
+			}
+			.text p{
+				font: 20px/30px "微软雅黑";
+				color: #cc330a;
+				height: 90px;
+				margin: 20px 0;
+			}
+			.btn a{
+				display: block;
+				width: 120px;
+				height: 40px;
+				background: #ccc;
+				text-align: center;
+				line-height: 40px;
+				font-size: 20px;
+				font-family: "微软雅黑";
+				border-radius: 5px;
+				color: #fff;
+				margin-bottom: 10px;
+			}
+			.btn a.active{
+				background: #a3903e;
+			}
+			@keyframes twinkle{
+				0%{
+					transform:scale(1);  
+				}
+				50%{
+					transform:scale(1.5);  
+				}
+				100%{
+					transform:scale(1);  
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			window.onload=function(){
+				//左侧功能
+				var imgArr=['456fgf','34435','sadsd','sdbg','sdfsdfcc'];//图片
+				var prev=document.querySelector('.prev');
+				var next=document.querySelector('.next');
+				var img=document.getElementById('img');
+				var n=0;
+				var textArr=['明前春茶又叫“明前茶”，指清明节前采制的茶叶','每次小S发微博晒她家女儿许老三的照片的时候','吃货福利一卡通，吃货们！ 福利来啦！一卡通拿去不谢！','夏春新品大牌走秀款印花上衣外套半身裙修身两件套连衣裙','实木家具都是未经再次加工的天然材料,不使用任何'];
+				var p=document.querySelector('p');
+				var spans=document.querySelectorAll('.circle span');
+				var last=spans[0];
+				var num=document.querySelector('.text h3 span');
+				var btns=document.querySelectorAll('.btn a');
+				var on=true;	//这个变量决定了用户点了哪个，如果是顺序切换（true），循环切换（false）
+				//顺序切换
+				btns[0].onclick=function(){
+					on=true;
+					btns[0].className='active';
+					btns[1].className='';
+				}
+				//循环切换
+				btns[1].onclick=function(){
+					on=false;
+					btns[0].className='';
+					btns[1].className='active';
+				}
+				//下一张
+				next.onclick=function(){
+					n++;
+					if(n==imgArr.length){
+						//这个条件成立，说明图片已经走到最后一张了，在这里能体现出顺序切换还是循环切换的不同了（该做一个判断）
+						if(on==true){
+							//说明现在是顺序切换，图片要停在最后一张
+							n=imgArr.length-1;
+							
+							//添加动画效果
+							btns[0].style.animation='0.3s twinkle';
+							btns[0].addEventListener('animationend',function(){
+								btns[0].style.animation='';
+							});
+						}else{
+							//说明现在是循环切换，图片要停跳到第一张
+							n=0;
+						}
+					}
+					img.src="img/"+imgArr[n]+".jpg";
+					p.innerHTML=textArr[n];
+					num.innerHTML=n+1+'/'+imgArr.length;
+					last.className='';
+					spans[n].className='active';
+					last=spans[n];
+				}
+				//上一张
+				prev.onclick=function(){
+					n--;
+					if(n==-1){
+						//这个条件成立，说明图片已经走到最后一张了，在这里能体现出顺序切换还是循环切换的不同了（该做一个判断）
+						if(on==true){
+							//说明现在是顺序切换，图片要停在第一张
+							n=0;
+							
+							//添加动画效果
+							btns[0].style.animation='0.3s twinkle';
+							btns[0].addEventListener('animationend',function(){
+								btns[0].style.animation='';
+							});
+						}else{
+							//说明现在是循环切换，图片要停跳到最后一张
+							n=imgArr.length-1;
+						}
+					}
+					img.src="img/"+imgArr[n]+".jpg";
+					p.innerHTML=textArr[n];
+					num.innerHTML=n+1+'/'+imgArr.length;
+					last.className='';
+					spans[n].className='active';
+					last=spans[n];
+				}
+				//圆圈点击功能
+				for(var i=0;i<spans.length;i++){
+					spans[i].index=i;
+					spans[i].onclick=function(){
+						last.className='';
+						this.className='active';
+						last=this;
+						
+						n=this.index;
+						img.src="img/"+imgArr[n]+".jpg";
+						p.innerHTML=textArr[n];
+						num.innerHTML=n+1+'/'+imgArr.length;
+					}
+				}
+			}
+		</script>
+		<section id="pic">
+			<div id="left">
+				<img id="img" src="img/456fgf.jpg"/>
+				<a href="javascript:;" class="prev"><</a>
+				<a href="javascript:;" class="next">></a>
+				<div class="circle">
+					<span class="active"></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</div>
+			<div id="right">
+				<div class="text">
+					<h3>图片数量 <span>1/5</span></h3>
+					<p>明前春茶又叫“明前茶”，指清明节前采制的茶叶</p>	
+				</div>
+				<div class="btn">
+					<a href="javascript:;" class="active">顺序切换</a>
+					<a href="javascript:;">循环切换</a>
+				</div>
+			</div>
+		</section>
+	</body>
+</html>
