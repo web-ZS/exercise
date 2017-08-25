@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			/*
+			 * 闭包的一个作用
+			 * 	在循环当中找到对应的i的值
+			 */
+			window.onload=function(){
+				var lis=document.querySelectorAll('li');
+				//var i=0;
+				for(var i=0;i<lis.length;i++){
+					/*lis[i].index=i;
+					(function(i){
+						//var i=
+						lis[i].onclick=function(){
+							console.log(i);		//5
+							console.log(this.index);
+						};
+					})(i);
+					*/
+					
+					lis[i].index=i;
+					lis[i].onclick=function(){
+						
+						//return function(){
+							console.log(this.index);
+						//}
+					};
+				}
+				
+				
+			}
+		</script>
+	</head>
+	<body>
+		<ul>
+			<li>red</li>
+			<li>green</li>
+			<li>blue</li>
+			<li>yellow</li>
+			<li>pink</li>
+		</ul>
+	</body>
+</html>

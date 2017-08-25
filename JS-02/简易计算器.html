@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				display: inline-block;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+				var inputs=document.querySelectorAll('input');
+				var btn=document.getElementById('btn');
+				var result=document.querySelector('div');
+				
+				btn.onclick=function(){
+					result.innerHTML=parseFloat(inputs[0].value)+parseFloat(inputs[1].value);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<input type="text" value="" />
+		<span>+</span>
+		<input type="text" value="" />
+		<input type="button" id="btn" value="=" />
+		<div></div>
+	</body>
+</html>

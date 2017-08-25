@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			window.onload=function(){
+				var box=document.getElementById("box");
+				
+				//children		找到元素的第一层子元素，取到的是一组集合
+				
+				while(box.children.length!=0){
+					box=box.children[0];
+				}
+				
+				console.log(box);
+			}
+		</script>
+		<div id="box">
+			<ul>
+				<li>
+					<p>
+						<a href="#">kaivon</a>
+					</p>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>

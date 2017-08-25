@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width: 576px;
+				margin: auto;
+				overflow: hidden;
+			}
+			textarea,span,#btn,ul li{
+				float: right;
+			}
+			span{
+				display: block;
+				margin: 0 250px 13px 0;
+				font: 20px/33px "宋体";
+				font-weight: bold;
+			}
+			textarea{
+				width: 520px;
+			}
+			#btn{
+				display: block;
+				width: 98px;
+				font: 14px/28px "微软雅黑";
+				margin: 20px 240px 10px 0;
+			}
+			ul{
+			    list-style: none;
+			    display: block;
+				margin: 0;
+				padding: 0;
+			}
+			ul li{
+				font-size: 20px;
+				font-weight: bold;
+				margin-top: 40px;
+			}
+			ul li input{
+				width: 360px;
+				font: 14px/35px "宋体";
+				color: red;
+				padding-left: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			window.onload=function(){
+				var arr=[-27,'kaivon', 6-'20%',[],-5900,'800km',function(){alert('陈学辉');},,'xyz'-90,null,'66',document,[],true,'198px'-30,'49.9元',5,function(){alert(3);},Number('abc')];
+				
+				var inputs=document.querySelectorAll('ul li input');
+				var btn=document.getElementById('btn');
+				
+				var arrMax=[];
+				//console.log(arr);
+				btn.onclick=function(){
+					for(var i=0;i<inputs.length;i++){
+						inputs[i].style.color='blue';
+						inputs[i].value='';
+					}
+					
+					for(var i=0;i<arr.length;i++){
+						//数组里的某个数据本身就是数字
+						if(typeof (arr[i])=='number' && isNaN(arr[i])==false){
+							console.log(arr[i]);
+						    inputs[0].value+=arr[i]+',';
+					    }
+					   /*if(typeof arr[i]=='number'){
+						if(isNaN(arr[i])==false){
+							inputs[0].value+=arr[i]+',';
+						}
+					   }*/
+					    //可以转换成数字的值
+					    //console.log(Number(arr[i]));
+					    if(isNaN(parseFloat(arr[i]))==false){
+					    	console.log(arr[i]);
+					    	inputs[1].value+=arr[i]+',';
+					    }
+					    //转换后的最大值
+					    if(isNaN(arr[i])==false){
+					    	arrMax.push(Number(arr[i]));            //push() 方法可向数组的末尾添加一个或多个元素，并返回新的长度。
+					    	var max=-Infinity;
+					        for(i=0;i<arrMax.length;i++){
+					    	    if(arrMax[i]>max){
+					    		    max=arrMax[i];
+					    	    }
+					        }
+					        inputs[2].value=max;
+					    }
+					    //数组中NaN的位置
+					    if(arr[i]!=arr[i]){
+					    	inputs[3].value+=i+',';
+					    }
+					}
+				}
+			}
+		</script>
+		<div>
+			<span>默认数据</span>
+			<textarea id="text1" name="ta" rows="3">[-27,'kaivon', 6-'20%',[],-5900,'800km',function(){alert('陈学辉');},,'xyz'-90,null,'66',document,[],true,'198px'-30,'49.9元',5,function(){alert(3);},Number('abc')]</textarea>
+			<input type="button" id="btn" name="button" value="查看结果" />
+			<ul>
+				<li>所有数字：<input type="text" id="text2" name="text" value="数组里的某个数据本身就是数字" /></li>
+			    <li>可以转换成数字的值：<input type="text" id="text3" name="text" value="除了对象类型与布尔值类型" /></li>
+			    <li>转换后的最大值：<input type="text" id="text4" name="text" value="把所有数据转成数字以后，找出最大值" /></li>
+			    <li>数组中NaN的位置：<input type="text" id="text5" name="text" value="每个数据运算后的值为NaN" /></li>
+			</ul>
+		</div>
+	</body>
+</html>
