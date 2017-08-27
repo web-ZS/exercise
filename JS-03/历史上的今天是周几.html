@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<select id="year"></select>年
+		<select id="month"></select>月
+		<select id="date"></select>日
+		<span></span>
+		<script>
+			var d=new Date();
+			var oldDate=new Date();
+			
+			//年选项（用循环）
+			var year=document.getElementById('year');
+			var yearStr='';
+			for(i=2030;i>=1970;i--){
+				yearStr+='<option>'+i+'</option>';
+			};
+			year.innerHTML=yearStr;
+			year.value=d.getFullYear();
+			
+			//月选项
+			var month=document.getElementById('month');
+			var monthStr='';
+			for(i=0;i<=12;i++){
+				//d.setMonth(i+1);
+				monthStr+='<option>'+i+'</option>';
+			};
+			month.innerHTML=monthStr;
+			month.value=d.getMonth()+1;
+			
+			//日选项
+			var date=document.getElementById('date');
+			        d.setFullYear(year.value);
+					d.setMonth(month.value);
+					d.setDate(0);
+					
+					//console.log(d);
+					
+					var totalDay=d.getDate();		//代表这个月的最后一天，要根据这个来生成日
+					
+					var dayStr='';
+					for(var i=1;i<=totalDay;i++){
+						dayStr+='<option>'+i+'</option>';
+					}
+					
+					date.innerHTML=dayStr;
+					date.value=oldDate.getDate();
+		</script>
+	</body>
+</html>

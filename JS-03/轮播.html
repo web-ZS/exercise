@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box{
+				width: 730px;
+				height: 454px;
+				margin: 30px auto;
+				position: relative;
+				overflow: hidden;
+			}
+			#box ul{
+				position: absolute;
+				left: 0;
+			}
+			#box li{
+				list-style: none;
+				float: left;
+			}
+			#box div{
+				height: 70px;
+				width: 100%;
+				background: rgba(0,0,0,0.6);
+				position: absolute;
+				bottom: 0px;
+				font-family: "微软雅黑";
+				color: #fff;
+				text-indent: 20px;
+			}
+			#box div h3{
+				line-height: 40px;
+			}
+		</style>
+		<script src="js/move.js"></script>
+		<script>
+			window.onload=function(){
+				var ul=document.querySelector("ul");
+				var div=document.querySelector("#box div");
+				var n=0;		//用来存储图片走的个数
+				var timer;
+				
+				var textArr=[
+					{"title":'盛惠而来',"content":'京东携手天天果园百万车厘子，29元包邮畅想'},
+					{"title":'荣耀7',"content":'有点不同，0元预约，免费抽奖1999元'},
+					{"title":'老板购物节',"content":'2015我要更省，老板XX购物节精彩来袭'},
+					{"title":'送钱送美酒',"content":'大盘让我心碎，我在京东买醉送钱送美酒'},
+					{"title":'玩转暑假',"content":'追风少年，联想拯救者全国独家抢购'},
+					{"title":'游园门票',"content":'奔跑吧周末游游园门票一元秒杀'}
+				];
+				
+				//把ul的内容复制一份
+				ul.innerHTML+=ul.innerHTML;
+				
+				//把所有的li都排在一行
+				var lis=document.querySelectorAll("li");
+				//一个li的宽度？
+				var w=parseInt(getComputedStyle(lis[0]).width);
+				console.log(lis.length);
+				ul.style.width=w*lis.length+'px';
+				
+				//把文字添加到图片上
+				div.innerHTML='<h3>'+textArr[0].title+'</h3><p>'+textArr[0].content+'</p>';
+				
+				//开启一个定时器，让图片不断的走
+				timer=setInterval(pic,3000);
+				//pic();
+				function pic(){
+					n++;		//调一次函数表示图片已经走了一张了，就让它的值加个1
+					//让文字先运动到下面
+					move(div,{bottom:-70},500,'linear',function(){
+						//当文字已经运动消失了，这个时候该运动ul
+						move(ul,{left:-730*n},1000,'linear',function(){
+							//当图片停止了，需要去判断这张图是不是复制那个的第一张，如果是，就把ul拉回来
+							if(n==lis.length/2){
+								//当条件成立的时候说明，现在是复制那个第一张已经走完了，要让ul回到0
+								ul.style.left=0;
+								n=0;		//需要让n的值不再累加了，让它与图片对上号
+							}
+							
+							//在文字上去之前应该把内容改了
+							div.innerHTML='<h3>'+textArr[n].title+'</h3><p>'+textArr[n].content+'</p>';
+							//当ul走完了一个，这个时候需要让文字块移动上去
+							move(div,{bottom:0},500,'linear');
+						});
+					});
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<ul>
+				<li><img src="img/1.jpg" alt="" /></li>
+				<li><img src="img/2.jpg" alt="" /></li>
+				<li><img src="img/3.jpg" alt="" /></li>
+				<!--<li><img src="img2/4.jpg" alt="" /></li>
+				<li><img src="img2/5.jpg" alt="" /></li>
+				<li><img src="img2/6.jpg" alt="" /></li>-->
+			</ul>
+			<div>
+				<h3></h3>
+				<p></p>
+			</div>
+		</div>
+	</body>
+</html>

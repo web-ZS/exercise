@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width: 100px;
+				height: 100px;
+				background: #000;
+				position: absolute;
+				left: 10px;
+				top: 50px;
+			}
+		</style>
+		<script src="js/move.js"></script>
+	</head>
+	<body>
+		<script>
+			window.onload=function(){
+				var btn=document.querySelector('input');
+				var div=document.querySelector('div');
+				btn.onclick=function(){
+					move(div,{left:500,top:500},1000,'backBoth',function(){
+						alert('我到了!');
+					});
+				}
+			}
+		</script>
+		<input type="button" name="btn" value="走你" />
+		<div>
+			
+		</div>
+	</body>
+</html>

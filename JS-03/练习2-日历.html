@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#timeBox{
+				width: 206px;
+				background: rgba(0,0,0,0.3);
+				overflow: hidden;
+				padding: 50px 77px;
+			}
+			ul{
+				margin: 0;
+				padding: 0;
+			}
+			li{
+				list-style: none;
+				/*display: inline-block;*/
+				width: 30px;
+				height: 30px;
+				float: left;
+				text-align: center;
+				line-height: 30px;
+				font-size: 18px;
+				/*font-weight: bold;*/
+			}
+			#date{
+				width: 210px;
+			}
+			#date span{
+				float: left;
+				width: 30px;
+				height: 30px;
+				text-align: center;
+				line-height: 30px;
+				
+			}
+			#date span.active{
+				background: #f00;
+				color: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			window.onload=function(){
+				
+				//获取当前的时间
+				var nowTime=document.getElementById('nowTime');
+				function t1(){
+					var d=new Date();
+					nowTime.innerHTML=format(d.getHours())+':'+format(d.getMinutes())+':'+format(d.getSeconds());
+					function format(v){
+					return v<10?'0'+v:''+v;
+				    }
+				}
+				setInterval(t1,1000);
+				
+				//获取当前的日期
+				var d=new Date();
+				//setCalendar(d);
+				var nowDate=document.getElementById('nowDate');
+				nowDate.innerHTML=d.getFullYear()+'年'+(d.getMonth()+1)+'月'+d.getDate()+'日,'+'星期'+formatWeek(d.getDay());
+				function formatWeek(v){
+					return ['日','一','二','三','四','五','六'][v];
+				}
+				
+				var span=document.querySelector('#month span');
+				span.innerHTML=d.getFullYear()+'年'+(d.getMonth()+1)+'月';
+				
+				//日历部分
+				
+				var div=document.querySelector("#date div");
+				/*
+				 * 1、这个月有多少天
+				 * 2、这个月的第一天是周几
+				 */
+				
+				//获取某个月的最后一天
+				function getEndDay(year,month){
+					//要想知道这个月有多少天，必需知道年份与月份
+					return new Date(year,month,0).getDate();
+				}
+				
+				//获取到某个月第一天是星期几
+				function getWeek(year,month){
+					//要知道年份与月份，日期设为1
+					return new Date(year,month,1).getDay();
+				}
+				
+				//上个月的最后一天
+				var lastEndDay=getEndDay(d.getFullYear(),d.getMonth());
+				
+				//本月的最后一天
+				var curEndDay=getEndDay(d.getFullYear(),d.getMonth()+1);
+				
+				//这个月的第一天是星期几
+				var week=getWeek(d.getFullYear(),d.getMonth());
+				
+				//这个代表下个月的日期
+				var nextDay=1;
+				var dayStr='';
+				
+				//问题：如果这个月的第一天是周日，那样话，系统的日历会把第一行全部变成灰色。所以这个要单独处理一下
+				//原因：因为周日的话，week的值就为0，那第一个if就不会走。
+				//解决办法：如果week为0的话，把它的值改为7，就会走if条件，那上面会出一行灰色的字
+				week=week==0?7:week;
+				for(var i=0;i<42;i++){
+					if(i<week){
+						/*
+						 * 上个月的日期
+						 */
+						
+						dayStr='<span style="color:#ccc">'+(lastEndDay--)+'</span>'+dayStr;
+					}else if(i>=week+curEndDay){
+						//下个月的日期
+						dayStr+='<span style="color:#ccc">'+(nextDay++)+'</span>';
+					}else{
+						//本月的日期
+						var cl=(i-week+1)==d.getDate()?'active':'';
+						dayStr+='<span class="'+cl+'">'+(i-week+1)+'</span>';
+					}
+				}
+				
+				div.innerHTML=dayStr;
+				
+				//上下箭头翻页
+				var btns=document.querySelectorAll('#month a');
+				btns[0].onclick=function(){
+					d.setMonth(d.getMonth()-1);
+					//setCalendar(d);
+				}
+				btns[1].onclick=function(){
+					d.setMonth(d.getMonth()+1);
+					//setCalendar(d);
+				}
+			}
+		</script>
+		<div id="timeBox">
+			<div id="nowTime"></div>
+			<div id="nowDate"></div>
+			<div id="month">
+				<span></span>
+				<a id="prev"><img src="img-task/prev.png"/></a>
+				<a id="next"><img src="img-task/next.png"/></a>
+			</div>
+			<div id="date">
+				<ul>
+				    <li>日</li>
+				    <li>一</li>
+				    <li>二</li>
+				    <li>三</li>
+				    <li>四</li>
+				    <li>五</li>
+				    <li>六</li>
+			    </ul>
+			    <div></div>
+			</div>
+			<!--<span id="footer">日期和时间设置</span>-->
+		</div>
+	</body>
+</html>

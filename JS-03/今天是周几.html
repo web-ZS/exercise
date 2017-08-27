@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var d=new Date();
+			//console.log(d);
+			d.setDate(1);
+			alert("今天是周"+format(d.getDay()));
+			function format(n){
+				return ['日','一','二','三','四','五','六'][n];
+			}
+		</script>
+	</body>
+</html>

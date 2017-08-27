@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#ad{
+				background: url(img/3-01.jpg);
+			}
+		</style>
+		<script>
+			/*
+			 * 步骤
+			 * 	1、让div的高度从0变化到250（setInterval）
+			 * 	2、到达指定的高度后需要停止3秒钟（setTimeout）
+			 * 	3、让div的高度从250变化到100（setInterval）
+			 * 	4、运动完成以后要清除定时器
+			 */
+			
+			window.onload=function(){
+				var ad=document.getElementById("ad");
+				var t1;
+				var t2;
+				
+				var h=parseInt(getComputedStyle(ad).height);
+				
+				t1=setInterval(function(){
+					h++;
+					ad.style.height=h+'px';
+					
+					//让它在250的高度的时候就停止运动，接着要停上3秒
+					if(h==250){
+						clearInterval(t1);
+						
+						//停止3秒
+						t2=setTimeout(function(){
+							t1=setInterval(function(){
+								//clearTimeout(t2);
+								h--;
+								ad.style.height=h+'px';
+								
+								//要让div回到100的位置就停止
+								if(h==100){
+									clearInterval(t1);
+								}
+							},16);
+						},3000);
+					}
+				},16);
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div id="ad"></div>
+	</body>
+</html>
+

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#lunbo{
+				width: 790px;
+				height: 340px;
+				margin: 100px auto;
+				overflow: hidden;
+				position: relative;
+			}
+			ul{
+				margin: 0;
+				padding: 0;
+				/*width: 3950px;*/
+				position: absolute;
+				left: 0;
+			}
+			li{
+				list-style: none;
+				float: left;
+			}
+			#lunbo div{
+				height: 70px;
+				width: 770px;
+				background: rgba(0,0,0,0.6);
+				padding-left: 20px;
+				position: absolute;
+				bottom: 0;
+				color: #FFFFFF;
+			}
+			h3{
+				/*font-size: 19px;*/
+				font-family: "微软雅黑";
+				line-height: 10px;
+			}
+			p{
+				/*font-size: 15px;*/
+				font-family: "宋体";
+			}
+		</style>
+		<script src="js/move.js"></script>
+	</head>
+	<body>
+		<script>
+			window.onload=function(){
+				var ul=document.querySelector('ul');
+				var div=document.querySelector('#lunbo div');
+				var timer;
+				var n=0;
+				var textArr=[
+					{"title":'盛惠而来',"content":'京东携手天天果园百万车厘子，29元包邮畅想'},
+					{"title":'荣耀7',"content":'有点不同，0元预约，免费抽奖1999元'},
+					{"title":'老板购物节',"content":'2015我要更省，老板XX购物节精彩来袭'},
+					{"title":'送钱送美酒',"content":'大盘让我心碎，我在京东买醉送钱送美酒'},
+					{"title":'玩转暑假',"content":'追风少年，联想拯救者全国独家抢购'},
+					{"title":'游园门票',"content":'奔跑吧周末游游园门票一元秒杀'}
+				];                                                                       //数组
+				
+				//把ul的内容复制一份
+				ul.innerHTML+=ul.innerHTML
+				//把所有的li都排在一行,ul宽=li的宽乘以lis.length
+				//var lis=document.querySelectorAll('li');
+				var imgs=document.querySelectorAll('img');
+				//console.log(imgs);
+				//li的宽=图片宽度
+				var w=parseInt(getComputedStyle(imgs[0]).width);
+				//console.log(imgs.length);
+				ul.style.width=w*imgs.length+'px';
+				
+				//把文字添加到图片上
+				div.innerHTML='<h3>'+textArr[0].title+'</h3><p>'+textArr[0].content+'</p>';
+				
+				//定时器走起
+				timer=setInterval(pic,3000);
+				function pic(){
+					n++;
+					move(div,{bottom:-70},500,'linear',function(){
+						move(ul,{left:-790*n},1000,'linear',function(){
+							if(n==imgs.length/2){
+								ul.style.left=0;
+								n=0;
+							};
+							div.innerHTML='<h3>'+textArr[n].title+'</h3><p>'+textArr[n].content+'</p>';
+							move(div,{bottom:0},500,'linear');
+						});
+					});
+				}
+			}
+		</script>
+		<div  id="lunbo">
+			<ul>
+				<li>
+					<img src="img/3-11.jpg" />
+				</li>
+				<li>
+					<img src="img/3-12.jpg" />
+				</li>
+				<li>
+					<img src="img/3-13.jpg" />
+				</li>
+				<li>
+					<img src="img/3-14.jpg" />
+				</li>
+				<li>
+					<img src="img/3-15.jpg" />
+				</li>
+			</ul>
+			<div>
+				<h3></h3>
+				<p></p>
+			</div>
+		</div>
+	</body>
+</html>

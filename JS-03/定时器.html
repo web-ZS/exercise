@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				border: solid 1px red;
+				width: 100px;
+				height: 100px;
+				margin: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			window.onload=function(){
+				var div=document.querySelector('div');
+				var i=100;
+				div.onclick=function(){
+					setTimeout(function(){
+						div.innerHTML=i;
+						//i++;
+					},5000);
+				}
+			}
+		</script>
+		<div></div>
+	</body>
+</html>

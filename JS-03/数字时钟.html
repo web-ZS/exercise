@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#timebox{
+				background: gray;
+				border: solid 1px #000000;
+				font: 36px/72px "微软雅黑";
+				text-indent: 36px;
+				color: #FFFFFF;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			window.onload=function(){
+				var timebox=document.getElementById('timebox');
+				
+				//定时器函数
+				function time(){
+					var d=new Date();
+					timebox.innerHTML=d.getFullYear()+'年'
+				        +format(d.getMonth()+1)+'月'
+				        
+				        +format(d.getDate())+'日'
+				        +' '+'星期'+formatWeek(d.getDay())
+				        +' '+format(d.getHours())+'点'
+				        +format(d.getMinutes())+'分'
+				        +format(d.getSeconds())+'秒';
+				
+				    //设置星期几的数字转文字
+				    function formatWeek(v){
+					    return ['日','一','二','三','四','五','六'][v];
+				    }
+				    //给单数数字前面加0
+				    function format(v){
+					    if(v<10){
+						    v='0'+v;
+					    }
+					        return v;
+				    }
+				}
+				//定时器走起
+				setInterval(time,1000);
+			}
+		</script>
+		<div id="timebox">
+			
+		</div>
+	</body>
+</html>
