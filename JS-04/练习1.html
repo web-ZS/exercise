@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			/*div{
+				width: 1208px;
+				margin: 0 auto;
+				position: relative;
+			}*/
+			input{
+				margin: auto;
+			}
+			ul{
+				margin: 0;
+				padding: 0;
+				width: 1208px;
+				margin: 0 auto;
+				position: relative;
+			}
+			li{
+				list-style: none;
+				width: 280px;
+				height: 223px;
+				border: 10px solid #fff;
+				margin: 0 1px;
+				position: absolute;
+			}
+			font{
+				height: 43px;
+				line-height: 43px;
+				color: #006699;
+				font-size: 18px;
+				text-align: center;
+			}
+			span{
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<script src="js/move.js"></script>
+		<script>
+			window.onload=function(){
+				//设置数组
+				/*var arr=[
+					{"img":' src="img/1-01.jpg"',"font":'1-温馨办公'},
+					{"img":' src="img/1-02.jpg"',"font":'2-桌面游戏'},
+					{"img":' src="img/1-03.jpg"',"font":'3-汽车摇滚'},
+					{"img":' src="img/1-04.jpg"',"font":'4-狭路相逢'},
+					{"img":' src="img/1-05.jpg"',"font":'5-棒球小子'},
+					{"img":' src="img/1-06.jpg"',"font":''},
+					
+					
+				];*/
+				//生成li
+				var lis=document.querySelectorAll('li');
+				//lis[0].innerHTML='<img'+arr[0].img+'</><span>'+arr[0].font+'</span>';
+				/*for(n=0;n<=7;n++){
+					lis[n].innerHTML+='<img'+arr[n].img+'</><span>'+arr[n].font+'</span>';
+				};*/
+				
+				var order=[];		//从大到小或者从小到大对应的位置信息
+				var random=[];		//随机排序的位置信息
+				for(var i=0;i<lis.length;i++){
+					order.push({"left":getComputedStyle(lis[i]).left,"top":getComputedStyle(lis[i]).top});
+					random.push({"left":getComputedStyle(lis[i]).left,"top":getComputedStyle(lis[i]).top});
+				}
+				
+				//判断按钮是从大到小还是从小到大
+				var n=0;
+				//console.log(lis);
+				//btn1点击事件,按顺序排列
+				var btn1=document.getElementById('btn1');
+				btn1.onclick=function(){
+					n++;
+					this.value=n%2?"从小到大":"从大到小";
+					//让图片动起来
+					//console.log();
+					order.reverse();
+					toMove(order);
+				}
+				//btn2点击事件，随机排序
+				var btn2=document.getElementById('btn2');
+				btn2.onclick=function(){
+					random.sort(function(){
+						return 0.5-Math.random();
+					});
+					toMove(random);
+				}
+				function toMove(arr){
+					for(var i=0;i<lis.length;i++){
+						move(lis[i],{left:parseFloat(arr[i].left),top:parseFloat(arr[i].top)},600,'linear');
+					}
+				}
+			}
+		</script>
+		<div>
+			<input type="button" name="btn1" id="btn1" value="从大到小" />
+			<input type="button" name="btn2" id="btn2" value="打乱顺序" />
+			<ul>
+				<li style="left: 1px;top: 0px;">
+					<img src="img/1-01.jpg"/>
+					<font>1-温馨办公</font>
+				</li>
+				<li style="left: 303px;top: 0px;">
+					<img src="img/1-02.jpg"/>
+					<font>2-桌面游戏</font>
+				</li>
+				<li style="left: 605px;top: 0;">
+					<img src="img/1-03.jpg"/>
+					<font>3-汽车摇滚</font>
+				</li>
+				<li style="left: 907px;top: 0px;">
+					<img src="img/1-04.jpg"/>
+					<font>4-狭路相逢</font>
+				</li>
+				<li style="left: 1px;top: 243px;">
+					<img src="img/1-05.jpg"/>
+					<font>5-棒球小子</font>
+				</li>
+				<li style="left: 303px;top: 243px;">
+					<img src="img/1-06.jpg"/>
+					<font>6-球鞋动力</font>
+				</li>
+				<li style="left: 605px;top: 243px;">
+					<img src="img/1-07.jpg"/>
+					<font>7-游戏官网</font>
+				</li>
+				<li style="left: 907px;top: 243px;">
+					<img src="img/1-08.jpg"/>
+					<font>8-指尖社区</font>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>
