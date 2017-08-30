@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			section{
+				width: 850px;
+				background: #f0eef0;
+				font: 14px/50px "微软雅黑";
+				box-shadow: 0px 0px 3px 2px #837b7f;
+			}
+			ul{
+				margin: 0;
+				padding: 0;
+				display: inline-block;
+			}
+			li{
+				list-style: none;
+				display: inline-block;
+				margin-left: 20px;
+				color: #252525;
+				cursor:pointer;
+			}
+			li.active{
+				color: #c4284d;
+			}
+			.title{
+				color: #8a8a8a;
+				margin-left: 20px;
+			}
+			#yixuan{
+				background: #ebe4e4;
+			}
+			#selected{
+				border: solid red 1px;
+				line-height: 18px;
+				padding: 1px;
+				display: none;
+				margin-left: 10px;
+			}
+			#selected span{
+				margin: 0 4px;
+			}
+			#selected div{
+				display: inline-block;
+				background: red;
+				color: #fff;
+				text-align: center;
+			}
+			#selDiv{
+				width: 18px;
+				cursor:pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			window.onload=function(){
+				//var lis=document.querySelectorAll('li');
+				var aa=document.querySelectorAll('li');
+				var selected=document.querySelector('#selected');
+				var arr=[
+				'惠普','联想','戴尔','三星','宏基','苹果','神州','华硕','方正'
+				];
+				//获取对应字符串
+				for(var i=0;i<aa.length;i++){
+					aa[i].index=i;
+					aa[i].onclick=function(){
+						selected.style.display='inline-block';
+						selected.firstElementChild.innerHTML=arr[this.index];
+						for(var i=0;i<aa.length;i++){
+							aa[i].setAttribute('class','');
+						}
+						this.setAttribute('class','active');
+					}
+				}
+				//点击x关闭已选标签
+				var selDiv=document.getElementById('selDiv');
+				//console.log(this);
+				selDiv.onclick=function(){
+					selected.style.display='none';
+					for(var i=0;i<aa.length;i++){
+						aa[i].setAttribute('class','');
+					}
+				}
+			}
+		</script>
+		<section>
+			<span class="title">品牌：</span><ul>
+			    <li><a class="click">惠普</a></li><li><a>联想</a></li><li><a>戴尔</a></li><li><a>三星</a></li><li><a>宏基</a></li><li><a>苹果</a></li><li><a>神州</a></li><li><a>华硕</a></li><li><a>方正</a></li>
+		    </ul>
+		    <div id="yixuan">
+		    	<span class="title">已选条件</span><span id="selected">
+		    		<span></span><div id="selDiv">x</div>
+		    	</span>
+		    </div>
+		</section>
+	</body>
+</html>

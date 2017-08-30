@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#text{
+				width: 520px;
+				border: solid 1px #000;
+				font: 18px/40px "宋体";
+				margin: auto;
+			}
+			#text strong{
+				color: red;
+				cursor: pointer;
+			}
+			#zhushi{
+				display: none;
+				border: solid 1px #000000;
+				font: 18px/40px "宋体";
+				width: 200px;
+				background: #FFFFFF;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			window.onload=function(){
+				var strongs=document.querySelectorAll('strong');
+				var zhushi=document.getElementById('zhushi');
+				var arr=[
+				    'JavaScript一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。',
+	                'JavaScript一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。',
+	                '超文本标记语言，标准通用标记语言下的一个应用。',
+	                '超文本标记语言，标准通用标记语言下的一个应用。'
+				];
+				for(var i=0;i<strongs.length;i++){
+					strongs[i].index=i;
+					strongs[i].onmouseover=function(){
+						zhushi.style.display='block';
+						zhushi.innerHTML=arr[this.index];
+						
+						zhushi.style.left=this.offsetLeft+'px';
+						zhushi.style.top=this.offsetTop+40+'px';
+					}
+					
+					strongs[i].onmouseout=function(){
+						zhushi.style.display='none';
+					}
+				}
+			}
+		</script>
+		<div id="text">
+			<strong>JavaScript</strong>一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。它的解释器被称为<strong>JavaScript</strong>引擎，为浏览器的一部分，广泛用于客户端的脚本语言，最早是在<strong>HTML</strong>（标准通用标记语言下的一个应用）网页上使用，用来给<strong>HTML</strong>网页增加动态功能。
+		</div>
+		<div id="zhushi"></div>
+	</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#list{
+				margin: 0;
+				padding: 0;
+				width: 400px;
+			}
+			#list li{
+				list-style: none;
+				background: #61a56c;
+				margin: 15px 0;
+				color: #fff;
+				font: 20px/50px "微软雅黑";
+				text-indent: 20px;
+				border-radius: 5px;
+				box-shadow: 3px 3px 5px #ccc;
+				position: relative;
+				top: 0;
+			}
+			#list li a{
+				text-decoration: none;
+				text-align: center;
+				text-indent: 0;
+				border: solid 1px #FFFFFF;
+				float: right;
+				width: 50px;
+				height: 25px;
+				color: #fff;
+				font: 14px/25px "微软雅黑";
+				margin: 12px 10px 0 0;
+			}
+			#list li a:hover{
+				background: #fff;
+				color: #61a56c;
+			}
+		</style>
+		<script src="js/move.js"></script>
+	</head>
+	<body>
+		<script>
+			window.onload=function(){
+				var list=document.getElementById('list');
+				var lis=document.querySelectorAll('li');
+				var h=lis[0].offsetHeight+15;                 //要运动的距离=li的高+margin值
+				for(var i=0;i<lis.length;i++){
+					var up=lis[i].children[1];
+					var down=lis[i].children[0];
+					
+					//上移
+					up.onclick=function(){
+						//要交换li的位置需要找到当前的li与上一个li
+						var cur=this.parentNode;
+						var prev=cur.previousElementSibling;
+						//list.insertBefore(cur,prev);
+						
+						//上移到头停止，判断是否还有上一个li
+						if(!prev){
+							alert('到头了！');
+							return;
+						}
+						move(prev,{top:h},300,'linear',end);
+						move(cur,{top:-h},300,'linear',end);
+						//运动的回调函数，运动完成后调整li的位置。
+						function end(){
+							list.insertBefore(cur,prev);
+							cur.style.top=0;
+							prev.style.top=0;
+						}
+					}
+					//下移功能
+					down.onclick=function(){
+						//在这里需要找到当前的li跟上一个Li
+						var cur=this.parentNode;				//当前的li
+						var next=cur.nextElementSibling;	//下一个li
+						
+						
+						//如果找不到上一个li，就不让代码接着走了
+						if(!next){
+							alert('老铁，走不动了');
+							return;
+						}
+						
+						move(cur,{top:h},200,'linear',end);
+						move(next,{top:-h},200,'linear',end);
+						
+						//
+						function end(){
+							list.insertBefore(next,cur);
+							cur.style.top=0;
+							next.style.top=0;
+						}
+					}
+				}
+			}
+		</script>
+		<ul id="list">
+			<li>green<a href="javascript:;">下移</a><a href="javascript:;">上移</a></li>
+			<li>red<a href="javascript:;">下移</a><a href="javascript:;">上移</a></li>
+			<li>blue<a href="javascript:;">下移</a><a href="javascript:;">上移</a></li>
+			<li>yellow<a href="javascript:;">下移</a><a href="javascript:;">上移</a></li>
+		</ul>
+	</body>
+</html>
