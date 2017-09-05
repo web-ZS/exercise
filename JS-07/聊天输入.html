@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			ul{
+				margin: 0;
+				padding: 0;
+				width: 200px;
+				height: 100px;
+				border: solid 1px #000;
+				overflow: auto;
+			}
+			li{
+				list-style: none;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			window.onload=function(){
+				var ul=document.querySelector('ul');
+				var text=document.querySelector('input');
+				text.onkeydown=function(ev){
+					if(ev.keyCode==13){
+						var li=document.createElement('li');
+						li.innerHTML=this.value;
+						ul.appendChild(li);
+						this.value='';
+						ul.scrollTop=ul.scrollHeight;
+					}
+				}
+			}
+		</script>
+		<ul></ul>
+		<input type="text" />
+	</body>
+</html>

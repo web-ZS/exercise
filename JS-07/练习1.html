@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>斜向移动功能未实现</title>
+		<style type="text/css">
+			div{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+			window.onload=function(){
+				var div=document.querySelector('div');
+				var step=5;
+				/*var abc={
+					37:
+				}*/
+				document.onkeydown=function(ev){
+					//console.log(ev.keyCode);
+					if(ev.keyCode==37){
+						div.style.left=div.offsetLeft-step+'px';
+					}
+					if(ev.keyCode==38){
+						div.style.top=div.offsetTop-step+'px';
+					}
+					if(ev.keyCode==39){
+						div.style.left=div.offsetLeft+step+'px';
+					}
+					if(ev.keyCode==40){
+						//div.style.top=div.offsetTop+step+'px';
+						move(div,ev);
+					}
+					/*if(ev.keyCode==37 && ev.keyCode==38){
+						move(div,ev);
+						setTimeout(function(){
+						    move(div,ev);
+					    },100);
+					}*/
+				}
+				
+				function move(obj,ev){
+					var timer=setInterval(function(){
+						div.style.top=div.offsetTop+step+'px';
+						
+						//清除定时器
+						/*if(opc<=0){
+							clearInterval(timer);
+							
+							//在定时器停的时候，把它们的值都回到最初的状态，为了下一次点击还从最初的状态开始运动
+							obj.style.width='10px';
+							obj.style.height='10px';
+							obj.style.opacity=0;
+						}*/
+					},16);
+				}
+			}
+		</script>
+		<div id="">
+			
+		</div>
+	</body>
+</html>

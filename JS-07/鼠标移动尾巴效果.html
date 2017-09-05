@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="{CHARSET}">
+		<title></title>
+		<style>
+			div{
+				width: 10px;
+				height: 10px;
+				background: green;
+				border-radius: 50%;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			window.onload=function(){
+				var str='';
+				var body=document.querySelector('body');
+				for(var i=0;i<50;i++){
+					str+='<div style="opacity:0"></div>';
+				}
+				body.innerHTML=str;
+				
+				var divs=document.querySelectorAll('div');
+				document.onmousemove=function(ev){
+					for(var i=divs.length-1;i>0;i--){                             //length-1？？？
+						divs[i].style.left=divs[i-1].style.left;
+						divs[i].style.top=divs[i-1].style.top;
+						divs[i].style.opacity=divs[i-1].style.opacity;
+					}
+					divs[0].style.left=ev.clientX+'px';
+					divs[0].style.top=ev.clientY+'px';
+					divs[0].style.opacity=1;
+				}
+			}
+		</script>
+	</body>
+</html>

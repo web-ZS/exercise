@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>首尾衔接的效果未实现</title>
+		<style>
+			section{
+				font-size: 0;
+				width: 100px;
+				height: 100px;
+				border: 5px solid #008000;
+				margin: auto;
+				/*overflow: hidden;*/
+				position: relative;
+			}
+			#row{
+				width:1000px;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			#vertical{
+				height:1000px;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			/*#row img{
+				position: absolute;
+				top: 0;
+			}
+			#vertical img{
+				position: absolute;
+				left: 0;
+			}*/
+		</style>
+	</head>
+	<body>
+		<script src="js/move.js"></script>
+		<script>
+			window.onload=function(){
+				var row=document.getElementById('row');
+				var vertical=document.getElementById('vertical');
+				var rowImgs=document.getElementsByTagName('row img');
+				var n=0;
+				//var Nu=parseInt(row.style.left);
+				//console.log(Nu);
+				document.addEventListener('keydown',function(ev){
+					if(ev.keyCode==37){
+						//row.style.left=row.offsetLeft-100+'px';
+						/*if(row.style.left<-1000px){
+							row.style.left=row.offsetWidth/2+'px';
+						}*/
+						
+						move(row,{left:-100},1000,'linear',function(){
+							//当图片停止了，需要去判断这张图是不是复制那个的第一张，如果是，就把ul拉回来
+							if(n==rowImgs.length/2){
+								//当条件成立的时候说明，现在是复制那个第一张已经走完了，要让ul回到0
+								row.style.left=0;
+								//n=0;		//需要让n的值不再累加了，让它与图片对上号
+							}
+						});
+					}
+					/*if(ev.keyCode==39){
+						row.style.left=row.offsetLeft+100+'px';
+					}*/
+				});
+				/*document.addEventListener('keydown',function(ev){
+					if(ev.keyCode==38){
+						vertical.style.top=vertical.offsetTop-100+'px';
+					}
+					if(ev.keyCode==40){
+						vertical.style.top=vertical.offsetTop+100+'px';
+					}
+				});*/
+				
+			}
+		</script>
+		<section>
+		    <div id="row">
+				<img src="img/1.jpg" <!--style="left: 0;"-->/>
+				<img src="img/2.jpg" <!--style="left: 100px;"-->/>
+				<img src="img/3.jpg" <!--style="left: 200px;"-->/>
+				<img src="img/4.jpg" <!--style="left: 300px;"-->/>
+				<img src="img/5.jpg" <!--style="left: 400px;"-->/>
+				<img src="img/1.jpg" <!--style="left: 500px;"-->/>
+				<img src="img/2.jpg" <!--style="left: 600px;"-->/>
+				<img src="img/3.jpg" <!--style="left: 700px;"-->/>
+				<img src="img/4.jpg" <!--style="left: 800px;"-->/>
+				<img src="img/5.jpg" <!--style="left: 900px;"-->/>
+		    </div>
+		    <div id="vertical">
+		    	<img src="img/1.jpg" <!--style="left: 0;"-->/>
+				<img src="img/2.jpg" <!--style="top: 100px;"-->/>
+				<img src="img/3.jpg" <!--style="top: 200px;"-->/>
+				<img src="img/4.jpg" <!--style="top: 300px;"-->/>
+				<img src="img/5.jpg" <!--style="top: 400px;"-->/>
+				<img src="img/1.jpg" <!--style="top: 500px;"-->/>
+				<img src="img/2.jpg" <!--style="top: 600px;"-->/>
+				<img src="img/3.jpg" <!--style="top: 700px;"-->/>
+				<img src="img/4.jpg" <!--style="top: 800px;"-->/>
+				<img src="img/5.jpg" <!--style="top: 900px;"-->/>
+		    </div>
+		</section>
+	</body>
+</html>
