@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				background: #f7f1df;
+			}
+			#img{
+				cursor: pointer;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+			window.onload=function(){
+				var aircraft=document.getElementById('img');
+				var mouseToimgX;
+				var mouseToimgY;
+				//按下鼠标时
+				aircraft.onmousedown=function(ev){
+					mouseToimgX=ev.clientX-aircraft.offsetLeft;
+					mouseToimgY=ev.clientY-aircraft.offsetTop;
+					//console.log(mouseToimgX,mouseToimgY);
+					
+					//移动鼠标时
+					aircraft.onmousemove=function(ev){
+						aircraft.style.left=ev.clientX-mouseToimgX+'px';
+						aircraft.style.top=ev.clientY-mouseToimgY+'px';
+						//console.log(aircraft.style.left,aircraft.style.top);
+					}
+					
+					//鼠标抬起时
+					aircraft.onmouseup=function(){
+						aircraft.onmousemove=null;
+					}
+					//消除浏览器默认效果
+					return false;
+				}
+			}
+		</script>
+		<div id="img">
+			<img src="img/aircraft.jpg"/>
+		</div>
+	</body>
+</html>

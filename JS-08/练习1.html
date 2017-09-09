@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			section{
+				width: 400px;
+				margin: 100px auto;
+				box-shadow: 0 0 50px #888888;
+				overflow: hidden;
+			}
+			#textBox{
+				width: 380px;
+				height: 500px;
+				float: left;
+				position: relative;
+			}
+			#textBox p{
+				margin: 0;
+				padding: 25px 20px;
+				text-indent: 2em;      /*首行缩进*/
+				font: 15px/25px "微软雅黑";
+				position: absolute;
+				top: 0;
+			}
+			#textBox p a{
+				display: block;
+			}
+			#moveBox{
+				width: 20px;
+				height: 100%;
+				float: right;
+				position: relative;
+			}
+			
+			#moveBox span{
+				width: 100%;
+				height: 20px;
+				background: #ccc;
+				display: block;
+				position: relative;
+				border-radius: 10px 10px 0 0;/*CSS3 圆角*/
+				background: linear-gradient(rgba(204, 204, 204, 0.8), rgba(153, 153, 153, 0.8));/*背景色渐变*/
+				cursor: default;/*鼠标样式*/
+			}
+			#moveBox span:first-child:before{   /*CSS3选择器+伪类方法，在此元素前添加元素*/
+				content: '';
+				position: absolute;
+				top: 0px;
+				right: 0;
+				left: 0;
+				margin: auto;
+				
+				width: 0;
+				height: 0;
+				border: solid 7px;
+				border-color: transparent transparent #fff;   /*CSS3绘制三角形，transparent是全透明黑色*/
+			}
+			#moveBox span:first-child.active{
+				background: linear-gradient(rgba(179, 179, 179, 0.8), rgba(128, 128, 128, 0.8));
+			}
+			#moveBox span:last-child{
+				border-radius: 0 0 10px 10px;
+			}
+			#moveBox span:last-child:before{   /*CSS3选择器+伪类方法*/
+				content: '';
+				position: absolute;
+				top: 5px;
+				right: 0;
+				left: 0;
+				margin: auto;
+				
+				width: 0;
+				height: 0;
+				border: solid 7px;
+				border-color: #fff transparent transparent;   /*CSS3绘制三角形，transparent是全透明黑色*/
+			}
+			#moveBox span:last-child.active{
+				background: linear-gradient(rgba(179, 179, 179, 0.8), rgba(128, 128, 128, 0.8));
+			}
+			
+			#moveBox>div{
+				width: 100%;
+				height: 460px;
+				position: relative;
+				background: rgba(153, 153, 153, 0.3);
+			}
+			.move{
+				width: 100%;
+				height: 100px;
+				background: linear-gradient(#84d2ff, #3299FF);
+				box-shadow: 1px 2px 3px rgba(51, 51, 51, 0.8);
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			.move:hover{
+				background: linear-gradient(#529bff, #026cff);
+			}
+			.move.active{
+				background: linear-gradient(#026cff, #529bff);
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			/*要求：
+			1、鼠标拖动蓝色滑块，内容区域滚动
+			2、鼠标放在文字区域与滚动条区域，滚动滚轮都可以滚动
+			3、鼠标按下滑块区域，滑块的中心滚动到鼠标按下的位置
+			4、鼠标点击滑块区域，滑块滚动一定的距离（距离自己定）
+			5、鼠标按下上下箭头，滚动条滚动
+			6、鼠标按下滑块或者上下箭头，都变个颜色
+			7、注意一个问题，鼠标按下滑块区域，这个时候再去滚动滚轮，要实现正确的效果
+			*/
+			//思路:需要一个共同的功能（滚动条与文本共同滚动），那么可以将此功能封装成一个函数，在各个事件里调用。
+			window.onload=function(){
+				var textBox=document.getElementById('textBox');
+				var text=document.querySelector('p');
+				var moveBox=document.getElementById('moveBox');
+				var move=document.querySelector('.move');
+				var moveParent=move.parentNode;
+				var spans=document.querySelectorAll('#moveBox span');
+				var timer=null;
+				//鼠标拖动蓝色滑块，内容区域滚动
+				var moveTop=0;
+				var maxMove=moveParent.offsetHeight-move.offsetHeight;//滑块可移动的最大距离
+				
+				move.onmousedown=function(ev){
+					this.className='move active';
+					disY=ev.clientY-this.offsetTop;
+					
+					document.onmousemove=function(ev){
+						moveTop=ev.clientY-disY;//滑块移动的距离
+						moving();//调用函数
+					}
+					
+					document.onmouseup=function(ev){
+						this.onmousemove=null;
+						move.className='move';
+					}
+					
+					ev.cancelBubble=true;//阻止浏览器默认的事件冒泡行为
+					return false;//阻止浏览器默认的事件
+				}
+				
+				//鼠标放在文字区域与滚动条区域，滚动滚轮都可以滚动
+				var section=document.querySelector('section');
+				myScroll(section,function(){
+					moveTop-=10;
+					moving();
+					
+				},function(){
+					moveTop+=10;
+					moving();
+					
+				});
+				
+				//鼠标按下滑块区域，滑块的中心滚动到鼠标按下的位置,鼠标点击滑块区域，滑块滚动一定的距离（距离自己定）
+				moveParent.onmousedown=function(ev){
+					timer=setInterval(function(){
+						if(ev.clientY<move.getBoundingClientRect().top+move.offsetHeight/2){
+							moveTop-=10;
+						}else{
+							moveTop+=10;
+						}
+						//如果他们俩个之间的差在5以内，我们就认为到达了目的地，然后就清除定时器，就能解决抖动的问题
+						if(Math.abs(ev.clientY-(move.getBoundingClientRect().top+move.offsetHeight/2))<=10){
+							clearInterval(timer);
+						}
+						
+						moving();
+					},16);
+				}
+				moveParent.onmouseup=function(){
+					clearInterval(timer);
+				}
+				
+				//鼠标按下上下箭头，滚动条滚动
+				for(var i=0;i<spans.length;i++){
+					spans[i].index=i;
+					spans[i].onmousedown=function(){
+						this.className='active';
+						var n=this.index;
+						timer=setInterval(function(){
+							moveTop=n?moveTop+5:moveTop-5;
+							moving();
+						},16);
+					}
+					
+					spans[i].onmouseup=function(){
+						clearInterval(timer);
+						this.className='';
+					}
+				}
+				
+				//滑块与文本一起滚动的函数
+				function moving(){
+					if(moveTop<0){
+						moveTop=0;
+					}else if(moveTop>maxMove){
+						moveTop=maxMove;
+					}
+					
+					var scale=moveTop/maxMove;
+					move.style.top=moveTop+'px';
+					text.style.top=-(text.offsetHeight-textBox.offsetHeight)*scale+'px';
+				}
+				
+				//滚轮事件函数
+				function myScroll(obj,fnUp,fnDown){
+					obj.onmousewheel=fn;
+					obj.addEventListener('DOMMouseScroll',fn);
+					
+					function fn(ev){
+						if(ev.wheelDelta>0 || ev.detail<0){
+							fnUp.call(obj);
+						}else{
+							fnDown.call(obj);
+						}
+						
+						ev.preventDefault();
+						return false;
+					}
+				
+				}
+			}
+		</script>
+		<section>
+			<div id="textBox">
+				<p>
+					<a>
+					海棠花（学名：Malus spectabilis （Ait.）Borkh）：乔木，高可达8米；小枝粗壮，圆柱形，幼时具短柔毛，逐渐脱落，老时红褐色或紫褐色，无毛。叶片椭圆形至长椭圆形，长5-8厘米，宽2-3厘米，边缘有紧贴细锯齿，有时部分近于全缘，幼嫩时上下两面具稀疏短柔毛，以后脱落，老叶无毛。花序近伞形，有花4-6朵，花直径4-5厘米；萼筒外面无毛或有白色绒毛；萼片三角卵形，先端急尖，全缘；花瓣卵形，长2-2.5厘米，宽1.5-2厘米，基部有短爪，白色，在芽中呈粉红色。果实近球形，直径2厘米，黄色。果期8-9月。
+					</a>
+					<a>
+					海棠性喜阳光，不耐阴，忌水湿。海棠花极为耐寒，对严寒及干旱气候有较强的适应性，所以可以承受寒冷的气候，一般来说，海棠在零下15℃也能生长的很好，完全可以放在室外，不过如果特别寒冷，比如零下三四十℃，就要注意采取保护措施了。海棠喜阳，适宜在阳光充足的的环境生长，如果长期置于阴凉的地方，就会生长不良，所以一定要保持它充足的阳光。
+					</a>
+					<a>
+					素有“国艳”之誉。是中国的特有植物。多生长在海拔50米至2000米的平原和山地，可以人工引种栽培。
+					</a>
+					<a>
+					海棠花历来为中国人民所喜爱，无论是古典园林，还是公共绿地都广泛运用海棠进行植物造景。海棠花不仅给人们带来视觉上和精神上的享受，而且还能够带来经济上的效益，中国很多地方已经广泛的对海棠花进行栽培和研究，为很多花农创造了很大的经济财富。
+					</a>
+			    </p>
+			</div>
+			<div id="moveBox">
+				<span></span>
+				<div>
+					<div class="move"></div>
+				</div>
+				<span></span>
+			</div>
+		</section>
+	</body>
+</html>
