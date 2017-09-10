@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 * 将2017-07-10格式转换成年月日格式
+			 */
+			var data='2017-07-10';
+			var re=/\d+/g; //定义正则,匹配数字
+			var result=data.match(re);
+			var font=['年','月','日'];
+			var newData='';
+			//给数字后面添加字符
+			for(var i=0;i<font.length;i++){
+				newData+=result[i]+font[i];
+			}
+			console.log(newData);
+			
+			var re1=/(\d+)\D+(\d+)\D+(\d+)/g;
+			
+			//利用分组方法替换非数字字符
+			var res1=data.replace(re1,function($0,$1,$2,$3){
+				//console.log($0);
+				//console.log($1);
+				//console.log($2);
+				//console.log($3);
+				
+				return $1+'年'+$2+'月'+$3+'日';
+			})
+			
+			alert(res1);
+		</script>
+	</body>
+</html>

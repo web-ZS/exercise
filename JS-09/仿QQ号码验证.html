@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 * QQ号码的规则
+			 * 1、全数字
+			 * 2、不能以0开头
+			 * 3、位数，5-12
+			 */
+			window.onload=function(){
+				var inp=document.getElementById('num');
+				var btn=document.querySelector('button');
+				
+				btn.onclick=function(){
+					var num=inp.value;
+					var re=/^[1-9]\d{4,11}$/g;
+					if(re.test(num)){
+						alert('QQ号码正确!');
+					}else{
+						alert('非正常QQ号码');
+					}
+				}
+			}
+		</script>
+		<input type="text" id="num" value="" />
+		<button>登录</button>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			 * 字符串的方法
+			 * 	indexOf()			通过字符找下标
+			 * 	substring()			截取字符串
+			 * 	charAt()				通过下标找字符
+			 * 	split()				分隔字符串
+			 */
+			
+			var str='sdk2f4535jl56673ks67df78787asdflkj123';
+			var arr=[];
+			
+			var newStr='';
+			
+			for(var i=0;i<str.length;i++){
+				if(!isNaN(str.charAt(i))){
+					newStr+=str.charAt(i);
+					
+				}else{
+					if(newStr){
+						arr.push(newStr);
+						newStr='';
+					}
+				}
+			}
+			
+			//如果最后的字符都是数字，那它就不会走上面代码里的else，虽然拼成了字符串了，但是不会往数组里添加了
+			if(newStr){
+				arr.push(newStr);
+				newStr='';
+			}
+			
+			console.log(arr);
+		</script>
+	</body>
+</html>

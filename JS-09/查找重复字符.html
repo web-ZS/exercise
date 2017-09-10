@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var b='adbfasdfbasdfkjbbbbbbbbbbbwe000rkwerhobwerbwerbwebbbbbbbbbbbbbbbbbbbb';
+			var bb=b.split('');
+			b=bb.sort().join('');
+			//console.log(b);
+			var re=/(\w)\1+/g;
+			var reb='';
+			var renum='';
+			//console.log(reb);
+			b.replace(re,function($0){
+				//console.log($0);
+				if(renum<$0.length){
+					renum=$0.length;
+					reb=$0;
+				}else if(renum===$0.length){		//这个条件成立说明会有一下重复次数一样的字符
+					reb+=' '+$0;
+				}
+				//return reb,renum;
+			});
+			console.log(reb,renum);
+		</script>
+	</body>
+</html>
