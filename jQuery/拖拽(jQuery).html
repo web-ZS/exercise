@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width: 100px;
+				height: 100px;
+				background: gold;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			div:hover{
+				cursor: pointer;
+			}
+		</style>
+		<script type="text/javascript" src="js/jquery-3.1.0.js" ></script>
+	</head>
+	<body>
+		<script>
+			$(function(){
+				$('div').mousedown(function(ev){
+					var disX=ev.clientX-$(this).offset().left;
+					var disY=ev.clientY-$(this).offset().top;
+					$(document).mousemove(function(ev){
+						$('div').css('left',ev.clientX-disX);
+						$('div').css('top',ev.clientY-disY);
+					});
+					$(document).mouseup(function(){
+						$(this).off();
+					});
+					return false;
+				});
+			});
+		</script>
+		<div></div>
+	</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				background: #888;
+			}
+			ul,ol{
+				margin: 0;
+				padding: 0;
+				font-size: 0;
+			}
+			li{
+				list-style: none;
+			}
+			#lunbo{
+				width: 500px;
+				height: 300px;
+				border: 1px solid #d8d8d8;
+				margin: 100px auto;
+				overflow: hidden;
+				position: relative;
+				cursor: pointer;
+			}
+			ul{
+				width: 2500px;
+				position: absolute;
+				left: 0;
+				top: 0;
+				z-index: 1;
+			}
+			ul li{
+				width: 500px;
+				height: 300px;
+				float: left;
+			}
+			ol{
+				position: absolute;
+				right: 5px;
+				bottom: 9px;
+				z-index: 2;
+			}
+			ol li{
+				width: 19px;
+				float: left;
+				background: #44aacf;
+				border: 1px solid #6664b0;
+				font: 12px/18px "arial"; 
+				color: #fff;
+				text-align: center;
+				margin-right: 3px;
+				vertical-align: middle;
+			}
+			.active{
+				width: 27px;
+				font: 12px/18px "arial";
+				padding: 2px 0;
+				background: #ff590f;
+				border: 1px solid #f8ab17;
+				position: relative; 
+				bottom: 2px;
+				color: #fff;
+				font-weight: bold;
+				vertical-align: middle;
+			}
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript" src="js/jquery-3.1.0.js" ></script>
+		<script>
+			$(function(){
+				var n=0;
+				var timer;
+				$('ol li').mouseover(function(){
+					//去掉全部li的class，给对应的li一个class，ul向左右移动
+					clearInterval(timer);
+					n=$(this).index();
+					move();
+				});
+				$('ol li').mouseout(function(){
+					autoPlay();
+				});
+				function move(){
+					$('ol li').attr('class','');
+					$('ol li').eq(n).attr('class','active');
+					$('ul').animate({left:-500*n},500);
+				}
+				autoPlay();
+				function autoPlay(){
+					timer=setInterval(function(){
+						n++;
+						if(n>$('ol li').length-1){
+							/*n=$('ol li').length-1;
+							timer=setInterval(function(){
+								n--;
+							},1000);*/
+							n=0;
+						}
+						move();
+					},1000);
+				}
+			});
+		</script>
+		<div id="lunbo">
+			<ul>
+				<li><img src="img/img_lunbo/1.jpg" alt="" /></li>
+				<li><img src="img/img_lunbo/2.jpg" alt="" /></li>
+				<li><img src="img/img_lunbo/3.jpg" alt="" /></li>
+				<li><img src="img/img_lunbo/4.jpg" alt="" /></li>
+				<li><img src="img/img_lunbo/5.jpg" alt="" /></li>
+			</ul>
+			<ol>
+				<li class="active">1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+			</ol>
+		</div>
+	</body>
+</html>

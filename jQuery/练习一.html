@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#small{
+				width: 300px;
+				height: 300px;
+				float: left;
+				position: relative;
+			}
+			#small img{
+				width: 300px;
+			}
+			#small div{
+				width: 100px;
+				height: 100px;
+				background: rgba(255,255,0,0.7);
+				cursor: move;
+				display: none;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			#big{
+				width: 340px;
+				height: 340px;
+				float: left;
+				position: relative;
+				overflow: hidden;
+				display: none;
+			}
+			#big img{
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript" src="js/jquery-3.1.0.js" ></script>
+		<script>
+			$(function(){
+				$('#small').mouseover(function(){
+					$('#small div').css('display','block');
+					$('#big').css('display','block');
+				}).mouseout(function(){
+					$('#small div').css('display','none');
+					$('#big').css('display','none');
+				}).mousemove(function(ev){
+					var l=ev.clientX-$(this).offset().left-$('#small div').width()/2;
+					var t=ev.clientY-$(this).offset().top-$('#small div').height()/2;
+					
+					if(l<0){
+						l=0;
+					}else if(l>$(this).width()-$('#small div').width()){
+						l=$(this).width()-$('#small div').width();
+					}
+					
+					if(t<0){
+						t=0;
+					}else if(t>$(this).height()-$('#small div').height()){
+						t=$(this).height()-$('#small div').height();
+					}
+					
+					$('#small div').css({'left':l,'top':t}); //取景块的位置
+					
+					var lPro=l/($(this).width()-$('#small div').width());
+					var tPro=t/($(this).height()-$('#small div').height());
+					//大图的位置
+					$('#big img').css({
+						'left':lPro*($('#big').width()-$('#big img').width()),
+						'top':tPro*($('#big').height()-$('#big img').height())
+					});
+				});
+			});
+		</script>
+		<div id="small">
+			<img src="img/job_1/big.jpg"/>
+			<div></div>
+		</div>
+		<div id="big">
+			<img src="img/job_1/big.jpg"/>
+		</div>
+	</body>
+</html>

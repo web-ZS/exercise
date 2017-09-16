@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			img{
+				display: block;
+				margin-top: 500px;
+			}
+		</style>
+		<script type="text/javascript" src="js/jquery-3.1.0.js" ></script>
+	</head>
+	<body>
+		<script>
+			//图片离文档最上面的距离<可视区的距离+滚动条的距离，说明图片已经进入到了可视区
+			$(function(){
+				$(document).scroll(function(){
+					var sTop=$(document).scrollTop(); //滚动距离
+					var viewHeight=$(window).height(); //可视距离
+					$('img').each(function(i,elem){
+						if($(elem).offset().top<sTop+viewHeight){
+							$(elem).attr('src',$(elem).attr('_src'));
+						}
+					});
+				});
+			});
+		</script>
+		<img _src="img/1.jpg" />
+		<img _src="img/2.jpg" />
+		<img _src="img/3.jpg" />
+		<img _src="img/4.jpg" />
+		<img _src="img/5.jpg" />
+	</body>
+</html>

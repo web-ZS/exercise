@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-3.1.0.js" ></script>
+		<script type="text/javascript">
+			$(function(){
+				$('input[value="上移"]').click(function(){
+					var curLi=$(this).parent();
+					var preLi=curLi.prev();
+					if(preLi.length==1){
+						preLi.before(curLi);
+					}else{
+						alert('OK');
+					}
+					
+					//console.log(curLi.length);
+				});
+				
+				$('input[value="下移"]').click(function(){
+					var curLi=$(this).closest('li');
+					var nextLi=curLi.next();
+					if(nextLi.length){
+						nextLi.after(curLi);
+					}else{
+						alert('OK');
+					}
+					
+					//console.log(curLi.length);	
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<ul>
+			<li>1、<input type="button" value="上移"/><input type="button" value="下移"/></li>
+			<li>2、<input type="button" value="上移"/><input type="button" value="下移"/></li>
+			<li>3、<input type="button" value="上移"/><input type="button" value="下移"/></li>
+			<li>4、<input type="button" value="上移"/><input type="button" value="下移"/></li>
+			<li>5、<input type="button" value="上移"/><input type="button" value="下移"/></li>
+		</ul>
+	</body>
+</html>

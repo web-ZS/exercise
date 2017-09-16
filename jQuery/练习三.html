@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				background: #000000;
+			}
+			section{
+				width: 973px;
+				height: 365px;
+				background: #FFFFFF;
+				margin: 100px auto;
+				position: relative;
+			}
+			ul{
+				margin: 0;
+				padding: 0;
+				font-size: 0;
+				position: relative;
+			}
+			li{
+				font:12px/24px "微软雅黑";
+				list-style: none;
+				cursor: pointer;
+				position: absolute;
+			}
+			#a{
+				left: 6px;
+				top: 7px;
+			}
+			#b{
+				left: 246px;
+				top: 7px;
+			}
+			#c{
+				left: 246px;
+				top: 250px;
+			}
+			#d{
+				left: 368px;
+				top: 250px;
+			}
+			#e{
+				left: 488px;
+				top: 7px;
+			}
+			#f{
+				left: 610px;
+				top: 7px;
+			}
+			#g{
+				left: 488px;
+				top: 127px;
+			}
+			#h{
+				left: 610px;
+				top: 127px;
+			}
+			#i{
+				left: 488px;
+				top: 250px;
+			}
+			#j{
+				left: 732px;
+				top: 7px;
+			}
+			#k{
+				left: 854px;
+				top: 7px;
+			}
+			#l{
+				left: 732px;
+				top: 127px;
+			}
+			div{
+				background:#ff0048;
+				color:#fff;
+				display: none;
+				position:absolute;
+				left:0px;
+				top:0px;
+				opacity:0.8;
+			}
+			#b div{padding-right:20px;padding-left:30px;font-size:18px;padding-bottom:15px;overflow:hidden;width:182px;padding-top:45px;height:172px}
+			#c div{padding-right:10px;padding-left:10px;font-size:12px;padding-bottom:10px;overflow:hidden;width:90px;padding-top:10px;height:90px}
+			#d div{padding-right:10px;padding-left:10px;font-size:12px;padding-bottom:10px;overflow:hidden;width:90px;padding-top:10px;height:90px}
+			#e div{padding-right:10px;padding-left:10px;font-size:12px;padding-bottom:10px;overflow:hidden;width:90px;padding-top:10px;height:90px}
+			#f div{padding-right:10px;padding-left:10px;font-size:12px;padding-bottom:10px;overflow:hidden;width:90px;padding-top:10px;height:90px}
+			#g div{padding-right:10px;padding-left:10px;font-size:12px;padding-bottom:10px;overflow:hidden;width:90px;padding-top:10px;height:90px}
+			#h div{padding-right:10px;padding-left:10px;font-size:12px;padding-bottom:10px;overflow:hidden;width:90px;padding-top:10px;height:90px}
+			#i div{padding-right:20px;padding-left:20px;font-size:14px;padding-bottom:10px;overflow:hidden;width:192px;padding-top:10px;height:90px}
+			#j div{padding-right:10px;padding-left:10px;font-size:12px;padding-bottom:10px;overflow:hidden;width:90px;padding-top:10px;height:90px}
+			#k div{padding-right:10px;padding-left:10px;font-size:12px;padding-bottom:10px;overflow:hidden;width:90px;padding-top:10px;height:90px}
+			#l div{padding-right:20px;padding-left:30px;font-size:18px;padding-bottom:15px;overflow:hidden;width:182px;padding-top:45px;height:172px}
+			
+			strong{
+				line-height:2em;
+			}
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript" src="js/jquery-3.1.0.js" ></script>
+		<script>
+			$(function(){
+				$('li').mouseenter(function(){
+					$(this).find('div').slideDown('400','linear');
+				});
+				$('li').mouseleave(function(){
+					$('li').find('div').slideUp('400','linear');
+				});
+			});
+		</script>
+		<section>
+			<ul>
+				<li id="a">
+					<img src="img/job_3/1.jpg" alt="张学友"/>
+				</li>
+				<li id="b">
+					<img src="img/job_3/2.jpg" alt="张震岳"/>
+					<div class="cover">
+						<strong>张震岳</strong><br />
+						<span>即将有5场演出</span><br />
+						查看详情
+					</div>
+				</li>
+				<li id="c">
+					<img src="img/job_3/3.jpg" alt="蔡琴"/>
+					<div class="cover">
+						<strong>蔡琴</strong><br />
+						<span>即将有4场演出</span><br />
+						查看详情
+					</div>
+				</li>
+				<li id="d">
+					<img src="img/job_3/4.jpg" alt="郑钧"/>
+					<div class="cover">
+						<strong>郑钧</strong><br />
+						<span>即将有2场演出</span><br />
+						查看详情
+					</div>
+				</li>
+				<li id="e">
+					<img src="img/job_3/5.jpg" alt="费玉清"/>
+					<div class="cover">
+						<strong>费玉清</strong><br />
+						<span>即将有4场演出</span><br />
+						查看详情
+					</div>
+				</li>
+				<li id="f">
+					<img src="img/job_3/6.jpg" alt="陈绮贞"/>
+					<div class="cover">
+						<strong>陈绮贞</strong><br />
+						<span>即将有2场演出</span><br />
+						查看详情
+					</div>
+				</li>
+				<li id="g">
+					<img src="img/job_3/7.jpg" alt="王力宏"/>
+					<div class="cover">
+						<strong>王力宏</strong><br />
+						<span>即将有6场演出</span><br />
+						查看详情
+					</div>
+				</li>
+				<li id="h">
+					<img src="img/job_3/8.jpg" alt="周杰伦"/>
+					<div class="cover">
+						<strong>周杰伦</strong><br />
+						<span>即将有6场演出</span><br />
+						查看详情
+					</div>
+				</li>
+				<li id="i">
+					<img src="img/job_3/9.jpg" alt="迈克学摇滚"/>
+					<div class="cover">
+						<strong>迈克学摇滚</strong><br />
+						<span>即将有1场演出</span><br />
+						查看详情
+					</div>
+				</li>
+				<li id="j">
+					<img src="img/job_3/10.jpg" alt="蔡依林"/>
+					<div class="cover">
+						<strong>蔡依林</strong><br />
+						<span>即将有1场演出</span><br />
+						查看详情
+					</div>
+				</li>
+				<li id="k">
+					<img src="img/job_3/11.jpg" alt="齐秦"/>
+					<div class="cover">
+						<strong>齐秦</strong><br />
+						<span>即将有2场演出</span><br />
+						查看详情
+					</div>
+				</li>
+				<li id="l">
+					<img src="img/job_3/12.jpg" alt="罗志祥"/>
+					<div class="cover">
+						<strong>罗志祥</strong><br />
+						<span>即将有6场演出</span><br />
+						查看详情
+					</div>
+				</li>
+			</ul>
+		</section>
+	</body>
+</html>

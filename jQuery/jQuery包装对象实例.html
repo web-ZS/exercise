@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-3.1.0.js" ></script>
+	</head>
+	<body>
+		<script>
+			//选中管理员时可以登录，普通用户不能登录
+			$(function(){
+				$('input').click(function(){
+					if($(this).val()=="管理员"){
+						$('span').wrap('<a href="#"></a>');
+					}else{
+						$('span').unwrap();
+					}
+				});
+			});
+		</script>
+		<input type="radio" name="username" id="" value="管理员" />管理员
+		<input type="radio" name="username" id="" value="普通用户" />普通用户
+		<span>登录</span>
+	</body>
+</html>

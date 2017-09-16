@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box div{
+				width: 200px;
+				height: 200px;
+				border: solid 1px #d5f;
+				display: none;
+			}
+			.active{
+				background: #953;
+			}
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript" src="js/jquery-3.1.0.js" ></script>
+		<script>
+			$(function(){
+				$('input').click(function(){
+					$('input').attr('class','');
+					$(this).attr('class','active');
+					
+					$('#box div').css('display','none');
+					$('#box div').eq($(this).index()).css('display','block');
+				});
+			});
+		</script>
+		<div id="box">
+			<input type="button" name="" id="" value="选项一" />
+			<input type="button" name="" id="" value="选项二" />
+			<input type="button" name="" id="" value="选项三" />
+			<div style="display: block;">第一个</div>
+			<div>第二个</div>
+			<div>第三个</div>
+		</div>
+	</body>
+</html>
