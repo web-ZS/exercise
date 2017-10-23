@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<script src="js/react.js"></script>
+		<script src="js/react-dom.js"></script>
+		<script src="js/browser.min.js"></script>
+	</head>
+	<body>
+		<div id="body"></div>
+		
+		<script type="text/babel">
+			var Statu=React.createClass({
+				getInitialState:function(){
+					return {
+						on:true,
+						mes:'All Right!'
+					}
+				},
+				render:function(){
+					var style={
+						color:this.state.on?'black':'red',
+						fontSize:this.state.on?'30px':'50px'
+					}
+					return (
+						<span style={style}>{this.state.mes}</span>
+					)
+				}
+			});
+			
+			var Cont=ReactDOM.render(
+				<Statu/>,
+				document.getElementById('body')
+			);
+			console.log(Cont);
+			Cont.setState({
+				on:false,
+				mes:'Oh,No!'
+			});
+		</script>
+	</body>
+</html>

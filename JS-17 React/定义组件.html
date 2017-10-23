@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<script src="js/react.js"></script>
+		<script src="js/react-dom.js"></script>
+		<script src="js/browser.min.js"></script>
+	</head>
+	<body>
+		<div id="body">
+			
+		</div>
+		<script type="text/babel">
+			var Person=React.createClass({
+				render:function(){
+					return (
+						<div>
+						<h2>name:kaiven</h2>
+						<span>age:28</span>
+						<p>hobby:play game</p>
+						</div>
+					)
+				}
+			});
+			
+			ReactDOM.render(
+				<Person/>,
+				document.getElementById('body')
+			);
+		</script>
+	</body>
+</html>

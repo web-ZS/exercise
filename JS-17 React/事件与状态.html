@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<script src="js/react.js"></script>
+		<script src="js/react-dom.js"></script>
+		<script src="js/browser.min.js"></script>
+	</head>
+	<body>
+		<div id="body"></div>
+		
+		<script type="text/babel">
+			var EventSta=React.createClass({
+				getInitialState:function(){
+					return {
+						clickNum:0
+					}
+				},
+				render:function(){
+					return (
+						<div>
+							<button onClick={this.clickFn}>点击</button>
+							<p>{this.state.clickNum}</p>
+						</div>
+					)
+				},
+				clickFn:function(){
+					this.setState({
+						clickNum:this.state.clickNum+1
+					});
+				}
+			});
+			
+			ReactDOM.render(
+				<EventSta/>,
+				document.getElementById('body')
+			);
+		</script>
+	</body>
+</html>
